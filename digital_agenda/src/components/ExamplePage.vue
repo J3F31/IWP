@@ -1,7 +1,7 @@
 <template>
   <section>
     <h1>Example</h1>
-    <p>This will be a digital agenda</p>
+    <p>This will be a digital agenda!</p>
   </section>
 </template>
 
