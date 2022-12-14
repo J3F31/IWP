@@ -1,4 +1,5 @@
 <template>
+  <LogIn class="login" @username="applyUsername"/>
   <div class="back"></div>
   <section class="info">
     <h1>IGNITION</h1>
@@ -9,20 +10,29 @@
       Morbi nec leo eget ligula feugiat pulvinar vel  sit earum, maxime consequatur nobis provident!
     </p>
   </section>
-  <section class="login">
-    <h1>LOGIN</h1>
-    <input type="text">
-    <input type="text">
-    <p>Don't have an account?</p>
-    <p>Create an account</p>
-  </section>
+  
 </template>
 
 <script lang='ts'>
 import { defineComponent } from 'vue';
+import Navbar from '../components/NavBar.vue';
+import LogIn from '../components/LogIn.vue';
 
 export default defineComponent({
-  name: 'LandingPage'
+  name: 'LandingPage',
+  data() {
+    return {
+      user: "" as string
+    }
+  },
+  methods: {
+    applyUsername(name: string) {
+      this.user = name;
+    }
+  },
+  components: {
+    LogIn
+  }
 });
 </script>
 
@@ -61,34 +71,7 @@ export default defineComponent({
   margin: 0;
 }
 .login {
-  margin: 0;
-  padding: 2rem;
-  width: 20%;
-  height: 40%;
-
-  position: absolute;
   top: 45%;
   left: 75%;
-  transform: translate(-50%, -50%);
-
-  background-color: rgba(203, 238, 241, .47);
-  border-radius: 7px;
-
-  display: grid;
-  grid-template-rows: auto auto auto 50px 50px;
-  gap: 10px;
 }
-.login h1,
-.login h3 {
-  color: #C67F04;
-}
-.login h1,
-.login h3,
-.login input,
-.login p {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 </style>

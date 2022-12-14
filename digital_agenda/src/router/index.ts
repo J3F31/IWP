@@ -8,17 +8,28 @@ const routes = [
   {
     path: '/',
     name: 'LandingPage',
-    component: LandingPage
+    component: LandingPage,
+    //meta: {
+    //  authredirect: true
+    //}
   },
   {
     path: '/agenda',
     name: 'DigitalAgenda',
-    component: DigitalAgenda
+    component: DigitalAgenda,
+    meta: {
+      requiresAuth: true,
+      auth: true
+    }
   },
   {
     path: '/forum',
     name: 'ForumPost',
-    component: ForumPost
+    component: ForumPost,
+    meta: {
+      requiresAuth: true,
+      auth: true
+    }
   }
 ]
 
