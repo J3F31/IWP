@@ -1,26 +1,28 @@
 <template>
-  <ExamplePage />
+  <Navbar />
+  <router-view/>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import ExamplePage from './components/ExamplePage.vue';
+import Navbar from './components/NavBar.vue'
 
 export default defineComponent({
   name: 'App',
   components: {
-    ExamplePage
+    Navbar
   }
 });
 </script>
 
 <style>
+#main {
+  margin: 0;
+  height: 100%;
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Jost;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
