@@ -40,7 +40,6 @@ export default defineComponent({
   methods: {
     loginUser() {
       signInWithEmailAndPassword(getAuth(), this.email, this.password).then(() => {
-        console.log("Successful log in")
         this.$emit('username', this.email)
         router.push('/agenda');
       })
