@@ -45,7 +45,7 @@ export default defineComponent({
   top: 0;
   display: grid;
   grid-template-columns: 50px auto 1fr auto auto auto;
-  font-size: 20px;
+  font-size: 30px;
 }
 a {
   background-color: #FEFAEA;
