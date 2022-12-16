@@ -34,7 +34,6 @@ router.beforeEach(async(to, from, next) => {
   }
   else if (auth && to.matched.some(record => record.meta.authredirect)) {
     // login page while logged in 
-    console.log("You are already logged in!")
     return next("/agenda")
   }
   return next()

@@ -24,11 +24,11 @@ export default defineComponent({
     signOut() {
       const auth = getAuth();
       signOut(auth).then(() => {
-        console.log("Successful log out")
         router.push('/')
-      }).catch((error) => {
-        error.log(error)
-      });
+      })
+      //.catch((error) => {
+      //  error.log(error)
+      //});
     }
   }
 });
