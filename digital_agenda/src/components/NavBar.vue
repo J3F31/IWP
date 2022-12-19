@@ -2,6 +2,7 @@
   <div class="nav">
     <router-link to="/agenda" class="agenda">AGENDA</router-link>
     <router-link to="/forum" class="forum">FORUM</router-link>
+    <router-link to="/asessment" class="asessment">ASESSMENT</router-link>
     <button class="profile" @click="showUser=!showUser"></button>
     <UserInfo class="user" v-if="showUser"/>
   </div>
@@ -61,6 +62,10 @@ a {
 .forum {
   grid-column-start: 5;
   grid-column-end: 6;
+}
+.asessment{
+  grid-column-start: 6;
+  grid-column-end: 7;
 }
 .profile {
   grid-column-start: 6;

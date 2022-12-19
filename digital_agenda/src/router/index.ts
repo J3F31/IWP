@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import LandingPage from '../views/LandingPage.vue';
 import DigitalAgenda from '../views/DigitalAgenda.vue';
 import ForumPost from '../views/ForumPost.vue';
+import Asessment from '../views/Asessment.vue';
 
 const routes = [
   {
@@ -12,6 +13,13 @@ const routes = [
     //meta: {
     //  authredirect: true
     //}
+  },{
+    path: '/asessment',
+    name: 'asessment',
+    component: Asessment,
+    meta:{
+      requiresAuth:true,
+    }
   },
   {
     path: '/agenda',
@@ -22,6 +30,7 @@ const routes = [
       auth: true
     }
   },
+  
   {
     path: '/forum',
     name: 'ForumPost',
