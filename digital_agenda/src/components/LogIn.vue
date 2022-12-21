@@ -19,7 +19,8 @@
     class="submit"
     type="submit" 
     value="LOG IN"
-    @click="loginUser">
+    @click="LoginUser">
+    <h3 class="fail-popup" v-if="wrongCredentials">Incorrect user or password</h3>
   </section>
 </template>
 
@@ -34,14 +35,16 @@ export default defineComponent({
     return {
       email: "" as string,
       password: "" as string,
-      logged: false as boolean,
+      wrongCredentials: false as boolean,
     }
   },
   methods: {
-    loginUser() {
+    LoginUser() {
       signInWithEmailAndPassword(getAuth(), this.email, this.password).then(() => {
         this.$emit('username', this.email)
         router.push('/agenda');
+      }).catch(() => {
+        this.wrongCredentials = true;
       })
     }
   }
