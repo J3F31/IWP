@@ -15,7 +15,6 @@
 
 <script lang='ts'>
 import { defineComponent } from 'vue';
-import Navbar from '../components/NavBar.vue';
 import LogIn from '../components/LogIn.vue';
 
 export default defineComponent({

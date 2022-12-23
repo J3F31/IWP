@@ -14,8 +14,6 @@
 
 <script lang='ts'>
 import { defineComponent } from 'vue';
-import router from '../router';
-import { getAuth, signOut } from 'firebase/auth';
 import UserInfo from './UserInfo.vue'
 
 export default defineComponent({
@@ -26,17 +24,6 @@ export default defineComponent({
   data() {
     return {
       showUser: false as boolean
-    }
-  },
-  methods: {
-    signOut() {
-      const auth = getAuth();
-      signOut(auth).then(() => {
-        console.log("Successful log out")
-        router.push('/')
-      }).catch((error) => {
-        error.log(error)
-      });
     }
   }
 });

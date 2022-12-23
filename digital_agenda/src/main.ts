@@ -3,6 +3,9 @@ import App from './App.vue';
 import router from './router';
 import { getAuth } from 'firebase/auth';
 import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore/lite';
+
+const app = createApp(App).use(router)
 
 const firebaseConfig = {
   apiKey: "AIzaSyBq9uIfb3Br-V6eZ8V4ftDU7vsGZRdXVVo",
@@ -18,6 +21,7 @@ initializeApp(firebaseConfig);
 const getCurrentUser = () => {
   return new Promise((resolve, reject) => {
     const unsubscribe = getAuth().onAuthStateChanged((user) => {
+      app.config.globalProperties.$userId = user?.uid
       unsubscribe()
       resolve(user)
     }, reject)
@@ -34,10 +38,9 @@ router.beforeEach(async(to, from, next) => {
   }
   else if (auth && to.matched.some(record => record.meta.authredirect)) {
     // login page while logged in 
-    console.log("You are already logged in!")
     return next("/agenda")
   }
   return next()
 })
 
-createApp(App).use(router).mount('#app')
+app.mount('#app')

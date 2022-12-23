@@ -1,7 +1,7 @@
 <template>
   <section class="dropdown">
     <h3>{{ user }}</h3>
-    <button class="signout" @click="signOut()"></button>
+    <button class="signout" @click="SignOut"></button>
   </section>
 </template>
 
@@ -21,14 +21,14 @@ export default defineComponent({
     this.user = getAuth().currentUser?.email;
   },
   methods: {
-    signOut() {
+    SignOut() {
       const auth = getAuth();
       signOut(auth).then(() => {
-        console.log("Successful log out")
         router.push('/')
-      }).catch((error) => {
-        error.log(error)
-      });
+      })
+      //.catch((error) => {
+      //  error.log(error)
+      //});
     }
   }
 });
