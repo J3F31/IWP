@@ -57,9 +57,9 @@
         <p class="post-content" :id="'content' + index">{{ post.body }}</p>
       </section>
       <div class="page-navigation">
-        <button v-if="pageNumber > 1" @click="TogglePage(-1)">Page back</button>
-        <p>{{ pageNumber }}/{{ Math.ceil(posts.length / 5) }}</p>
-        <button v-if="pageNumber <= posts.length / 5" @click="TogglePage(1)">Page forward</button>
+        <button v-if="pageNumber > 1" @click="TogglePage(-1)">page back</button>
+        <p>{{ pageNumber }}/{{ Math.ceil(posts.length / 5) > 0 ? Math.ceil(posts.length / 5) : 1 }}</p>
+        <button v-if="pageNumber <= posts.length / 5" @click="TogglePage(1)">page forward</button>
       </div> 
     </div>
     <section id="post-display">
@@ -72,7 +72,7 @@
 import { defineComponent } from 'vue';
 import Navbar from '../components/NavBar.vue'
 
-import { doc, getDocs, getDoc, query, addDoc, collection, DocumentData, where } from "firebase/firestore";
+import { getDocs, query, addDoc, collection, DocumentData, where } from "firebase/firestore";
 import { getFirestore } from 'firebase/firestore'
 
 export default defineComponent({
@@ -110,7 +110,7 @@ export default defineComponent({
         this.postPage.push(doc)
       })
     },
-    TogglePostView(index: any) {
+    TogglePostView(index: number | undefined) {
       this.postDisplay = !this.postDisplay
       const display = document.getElementById('post-display')
       display?.childNodes.forEach((child) => {
@@ -121,9 +121,10 @@ export default defineComponent({
       content?.classList.toggle("post-content")
       const post = document.getElementById('post' + index) as HTMLElement
       const clone = post.cloneNode(true)
-      display!.append(clone)
+      display?.append(clone)
     },
     async GetPosts(): Promise<void> {
+      this.pageNumber = 1
       this.postPage = []
       this.posts = []
       const db = getFirestore()
@@ -141,6 +142,7 @@ export default defineComponent({
       })
     },
     async GetUserPosts() {
+      this.pageNumber = 1
       this.postPage = []
       this.posts = []
       const db = getFirestore()
@@ -153,10 +155,11 @@ export default defineComponent({
       })
     },
     async GetTopicPosts() {
+      this.pageNumber = 1
       this.postPage = []
       this.posts = []
       const select = document.getElementById('topic-search') as HTMLSelectElement
-      const value = select!.value
+      const value = select?.value
       const db = getFirestore()
       const q = query(collection(db, "Users"))
       const querySnapshot = await getDocs(q);
@@ -174,7 +177,7 @@ export default defineComponent({
     async SubmitPost(): Promise<void> {
       if (this.title == "" || this.body == "") return
       const select = document.getElementById('topic-select') as HTMLSelectElement
-      const value = select!.value
+      const value = select?.value
       const db = getFirestore()
       await addDoc(collection(db, "Users", this.userId, "Posts"), {
         title: this.title,
