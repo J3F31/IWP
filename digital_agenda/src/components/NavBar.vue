@@ -6,6 +6,7 @@
     <button class="profile" @click="showUser=!showUser"></button>
     <UserInfo class="user" v-if="showUser"/>
     <div class="logo">LoGO</div>
+    
   </div>
   
 
@@ -79,9 +80,10 @@ a:hover {
 .profile {
   grid-column-start: 6;
   grid-column-end: 7;
-  width: 50px;
-  height: 50px;
-  background-color: #333;
+  width: 70px;
+  height: 70px;
+  /* background-color: #333; */
+  background-image:url("../../public/assets/profile-icon-png-908.png");
   margin: .8rem;
 }
 .user {
@@ -91,9 +93,10 @@ a:hover {
 .logo{
   grid-column-start: 1;
   grid-column-end: 3;
-  width: 50px;
- 
-  background-color: #333;
+  grid-row: 1;
+  width: 140px;
+  background-image: url("../../public/assets/hanzeLogo.png");
+  color: #333333;
   margin: .8rem;
 }
 </style>
