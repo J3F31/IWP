@@ -5,7 +5,10 @@
     <router-link to="/asessment" class="asessment">ASESSMENT</router-link>
     <button class="profile" @click="showUser=!showUser"></button>
     <UserInfo class="user" v-if="showUser"/>
+    <div class="logo">LoGO</div>
   </div>
+  
+
 </template>
 
 <script lang='ts'>
@@ -40,32 +43,38 @@ export default defineComponent({
 
 <style scoped>
 .nav {
-  background-color: #3AA1AA;
+  background-color: #333333;
+  opacity: 70%;
   width: 100vw;
   height: auto;
   top: 0;
   display: grid;
-  grid-template-columns: 50px auto 1fr auto auto auto;
-  font-size: 20px;
+  grid-template-columns:7fr auto 1fr auto auto auto;
+  font-size: 25px;
 }
 a {
-  background-color: #FEFAEA;
+  background-color: #333333;
   border-radius: 7px;
   padding: .6rem 2rem .6rem 2rem;
   margin: .8rem;
   text-decoration: none;
+  color: azure;
+}
+a:hover {
+  background-color: #ea6026;
+  color: #333333;
 }
 .agenda {
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
+.forum {
   grid-column-start: 4;
   grid-column-end: 5;
 }
-.forum {
+.asessment{
   grid-column-start: 5;
   grid-column-end: 6;
-}
-.asessment{
-  grid-column-start: 6;
-  grid-column-end: 7;
 }
 .profile {
   grid-column-start: 6;
@@ -78,5 +87,13 @@ a {
 .user {
   top: 30%;
   left: 87%;
+}
+.logo{
+  grid-column-start: 1;
+  grid-column-end: 3;
+  width: 50px;
+ 
+  background-color: #333;
+  margin: .8rem;
 }
 </style>
