@@ -64,7 +64,7 @@
     </div>
     <section id="post-display">
     </section>
-    <button @click="TogglePostView(undefined)" v-if="postDisplay">back</button>
+    <button class="postbutton" @click="TogglePostView(undefined)" v-if="postDisplay">back</button>
   </section>
 </template>
 
@@ -196,18 +196,30 @@ export default defineComponent({
 </script>
 
 <style scoped>
-template{
-  background-color:darkblue;
-}
+
 .page-navigation {
   display: flex;
   flex-direction: row;
+}
+input{
+  font-size: 17px;
+  margin: 0.3rem;
+  left: 10%;
+}
+.post-submit {
+  font-size: 15px;
+}
+#topic-select{
+  font-size: 15px;
 }
 .post-explore {
   border: 1px solid #333;
   border-radius: 7px;
   margin-top: .5rem;
   cursor: pointer;
+  background-color: #adaba9;
+  font-size: 15px;
+  margin :1.5rem;
 }
 .post-content {
   display: none;
@@ -215,13 +227,19 @@ template{
 button{
   background-color: #333333;
   color: aliceblue;
-  border-radius: 10%;
   margin: 0.2rem;
   
   font-size: large;
 }
+
 button:hover{
   background-color: #ea6026;
   color: azure;
 }
+.expolore h3{
+
+ width: 60vw;
+
+}
+
 </style>
