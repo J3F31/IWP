@@ -3,6 +3,7 @@
     <router-link to="/agenda" class="agenda">AGENDA</router-link>
     <router-link to="/forum" class="forum">FORUM</router-link>
     <router-link to="/asessment" class="asessment">ASESSMENT</router-link>
+    <router-link to="/home" class="home">HOME</router-link>
     <button class="profile" @click="showUser=!showUser"></button>
     <UserInfo class="user" v-if="showUser"/>
     <div class="logo">LoGO</div>
@@ -55,14 +56,17 @@ a:hover {
 .agenda {
   grid-column-start: 3;
   grid-column-end: 4;
+  grid-row: 1;
 }
 .forum {
   grid-column-start: 4;
   grid-column-end: 5;
+  grid-row: 1;
 }
 .asessment{
   grid-column-start: 5;
   grid-column-end: 6;
+  grid-row: 1;
 }
 .profile {
   grid-column-start: 6;
@@ -72,6 +76,14 @@ a:hover {
   /* background-color: #333; */
   background-image:url("../../public/assets/profile-icon-png-908.png");
   margin: .8rem;
+}
+img{
+  object-fit: contain;
+}
+.home{
+  grid-column-start: 2;
+  grid-column-end: 3s;
+  grid-row: 1;
 }
 .user {
   top: 30%;
@@ -84,6 +96,6 @@ a:hover {
   width: 140px;
   background-image: url("../../public/assets/hanzeLogo.png");
   color: #333333;
-  margin: .8rem;
+  margin: 1.7rem;
 }
 </style>

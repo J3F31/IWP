@@ -4,6 +4,7 @@ import LandingPage from '../views/LandingPage.vue';
 import DigitalAgenda from '../views/DigitalAgenda.vue';
 import ForumPost from '../views/ForumPost.vue';
 import Asessment from '../views/Asessment.vue';
+import HomePage from '../views/HomePage.vue';
 
 const routes = [
   {
@@ -13,7 +14,16 @@ const routes = [
     //meta: {
     //  authredirect: true
     //}
-  },{
+  },
+  {
+    path: '/home',
+    name: 'homePage',
+    component: HomePage,
+    meta: {
+     authredirect: true
+    }
+  },
+  {
     path: '/asessment',
     name: 'asessment',
     component: Asessment,
