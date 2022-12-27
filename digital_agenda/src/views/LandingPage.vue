@@ -17,6 +17,7 @@
 import { defineComponent } from 'vue';
 import LogIn from '../components/LogIn.vue';
 
+
 export default defineComponent({
   name: 'LandingPage',
   data() {
@@ -46,7 +47,7 @@ export default defineComponent({
   left: 50%;
   transform: translate(-50%, -50%);
 
-  background-image: url("../../public/assets/placeholder_background.jpg");
+  background-image: url("../../public/assets/background1.png");
   background-size: 100% auto;
   z-index: -1;
   opacity: .2;
@@ -58,7 +59,7 @@ export default defineComponent({
   width: 40%;
 
   position: absolute;
-  top: 70%;
+  top: 40%;
   left: 30%;
   transform: translate(-50%, -50%);
 }

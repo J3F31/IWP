@@ -61,7 +61,8 @@ export default defineComponent({
   position: absolute;
   transform: translate(-50%, -50%);
 
-  background-color: rgba(203, 238, 241, .47);
+  background-color: #333333;
+  opacity: 70%;
   border-radius: 7px;
 
   display: grid;
