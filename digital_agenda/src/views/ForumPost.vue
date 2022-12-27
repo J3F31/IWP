@@ -196,6 +196,9 @@ export default defineComponent({
 </script>
 
 <style scoped>
+template{
+  background-color:darkblue;
+}
 .page-navigation {
   display: flex;
   flex-direction: row;
@@ -208,5 +211,17 @@ export default defineComponent({
 }
 .post-content {
   display: none;
+}
+button{
+  background-color: #333333;
+  color: aliceblue;
+  border-radius: 10%;
+  margin: 0.2rem;
+  
+  font-size: large;
+}
+button:hover{
+  background-color: #ea6026;
+  color: azure;
 }
 </style>

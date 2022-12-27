@@ -16,7 +16,7 @@ const routes = [
     //}
   },
   {
-    path: '/home',
+    path: '/homePage',
     name: 'homePage',
     component: HomePage,
     meta: {
