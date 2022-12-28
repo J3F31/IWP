@@ -3,7 +3,7 @@
     <router-link to="/agenda" class="agenda">AGENDA</router-link>
     <router-link to="/forum" class="forum">FORUM</router-link>
     <router-link to="/asessment" class="asessment">ASESSMENT</router-link>
-    <router-link to="/HomePage" class="home">HOME</router-link>
+    <router-link to="/homePage" class="home">HOME</router-link>
     <button class="profile" @click="showUser=!showUser"></button>
     <UserInfo class="user" v-if="showUser"/>
     <div class="logo">LoGO</div>

@@ -1,7 +1,7 @@
 <template>
   <section class="dropdown">
     <h3>{{ user }}</h3>
-    <button class="signout" @click="SignOut"></button>
+    <button class="signout" @click="SignOut">Sign Out</button>
   </section>
 </template>
 
@@ -36,23 +36,32 @@ export default defineComponent({
 
 <style scoped>
 .dropdown {
-  margin: 0;
+  margin: 0.3rem;
   padding: 2rem;
   width: 20%;
   height: 40%;
+  
+  position: sticky;
+/* 
+  it was absolute but i changed it becase everething was on top of it */
 
-  position: absolute;
   transform: translate(-50%, -50%);
-
+    
   background-color: #333333;
   color: aliceblue;
-  opacity: 70%;
+  opacity: 90%;
   border-radius: 7px;
+  z-index: 1000;
 }
 .signout {
-  width: 50px;
+  width: 80px;
   height: 50px;
   background-color: black;
   margin: .8rem;
+  color: azure;
+}
+.signout:hover{
+  background-color: #ea6026;
+  color: black;
 }
 </style>
