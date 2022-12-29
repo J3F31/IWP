@@ -52,13 +52,15 @@ export default defineComponent({
   margin-left: 8rem;
   position: relative;
   display: grid;
-  grid-template-columns:   1fr 1fr; 
+  grid-template-columns:   3fr 1fr; 
   grid-row: auto auto auto auto
 }
 .posterimage{
   grid-column-start:2 ;
   background-image: url("../../public/assets/poster1.png");
-  
+  margin-right: 5.5rem;
+  /* margin: 1.2rem; */
+  /* width: 200%; */
 }
 .poster p{
   font-size: 15px;

@@ -20,7 +20,8 @@ const routes = [
     name: 'homePage',
     component: HomePage,
     meta: {
-     authredirect: true
+     authredirect: true,
+     auth: true
     }
   },
   {

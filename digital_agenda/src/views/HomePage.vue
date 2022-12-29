@@ -33,6 +33,10 @@
     top: 40%;
     left: 30%;
     transform: translate(-50%, -50%);
+    
+  }
+  body{
+    background-image: url('../../public/assets/background1.png');
   }
 
 </style>
