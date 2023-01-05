@@ -59,6 +59,7 @@ export default defineComponent({
   grid-column-start:2 ;
   background-image: url("../../public/assets/poster1.png");
   margin-right: 5.5rem;
+  background-repeat: no-repeat;
   /* margin: 1.2rem; */
   /* width: 200%; */
 }
