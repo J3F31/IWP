@@ -36,7 +36,7 @@ export default defineComponent({
 
 <style scoped>
 .dropdown {
-  margin: 0.3rem;
+  margin: 0.;
   padding: 2rem;
   width: 20%;
   height: 40%;
