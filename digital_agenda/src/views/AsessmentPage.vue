@@ -24,33 +24,33 @@ export default defineComponent({
 		
 		<section class="quiz" v-if="!quizCompleted">
 			<div class="quiz-info">
-				<span class="question">{{ getCurrentQuestion.question }}</span>
+				<span class="question">{{ GetCurrentQuestion().question }}</span>
 				<span class="score">Score {{ score }}/{{ questions.length }}</span>
 			</div>
 			
 			<div class="options">
 				<label 
-					v-for="(option, index) in getCurrentQuestion.options " :key=option.id
+					v-for="(option, index) in GetCurrentQuestion().options " :key="option"
 					:for="'option' + index" 
 					:class="`option ${
-						getCurrentQuestion.selected == index 
-							? index == getCurrentQuestion.answer 
+						GetCurrentQuestion().selected == index 
+							? index == GetCurrentQuestion().answer 
 								? 'correct' 
 								: 'wrong'
 							: ''
 					} ${
-						getCurrentQuestion.selected != null &&
-						index != getCurrentQuestion.selected
+						GetCurrentQuestion().selected != null &&
+						index != GetCurrentQuestion().selected
 							? 'disabled'
 							: ''
 					}`">
 					<input 
 						type="radio" 
 						:id="'option' + index" 
-						:name="getCurrentQuestion.index" 
+						:name="GetCurrentQuestion().options[index]" 
 						:value="index" 
-						v-model="getCurrentQuestion.selected" 
-						:disabled="getCurrentQuestion.selected"
+						v-model="GetCurrentQuestion().selected" 
+						:disabled="GetCurrentQuestion().selected == null ? false : true"
 						@change="SetAnswer" 
 					/>
 					<span>{{ option }}</span>
@@ -59,13 +59,9 @@ export default defineComponent({
 			
 			<button 
 				@click="NextQuestion" 
-				:disabled="!getCurrentQuestion.selected">
+				:disabled="!GetCurrentQuestion().selected">
 				{{ 
-					getCurrentQuestion.index == questions.length - 1 
-						? 'Finish' 
-						: getCurrentQuestion.selected == null
-							? 'Select an option'
-							: 'Next question'
+					currentQuestion == questions.length - 1 ? 'Finish' : GetCurrentQuestion().selected == null ? 'Select an option' : 'Next question'
 				}}
 			</button>
 		</section>
@@ -73,98 +69,76 @@ export default defineComponent({
 		<section v-else>
 			<h2>You have finished the quiz!</h2>
 			<p>Your score is {{ score }}/{{ questions.length }}</p>
+      <button @click="Return">HOME</button>
 		</section>
 	</main>
 </template>
 
 <script lang="ts">
-import { ref, computed } from 'vue'
-
 import { defineComponent } from 'vue';
-import Navbar from '../components/NavBar.vue'
-export default defineComponent({
-  name: 'AsessmentQuiz',
-  data(){
-    return{
-      getCurrentQuestion() {
-        let question = questions.value[currentQuestion.value]
-        question.index = currentQuestion.value
-        return question
-      }
+import router from '@/router';
 
+export default defineComponent({
+  name: 'AsessmentPage',
+  data() {
+    return {
+      questions: [
+        {
+          question: 'What is Vue?',
+          answer: 0,
+          options: [
+            'A framework',
+            'A library',
+            'A type of hat'
+          ],
+          selected: null
+        },
+        {
+          question: 'What is Vuex used for?',
+          answer: 2,
+          options: [
+            'Eating a delicious snack',
+            'Viewing things',
+            'State management'
+          ],
+          selected: null
+        },
+        {
+          question: 'What is Vue Router?',
+          answer: 1,
+          options: [
+            'An ice cream maker',
+            'A routing library for Vue',
+            'Burger sauce'
+          ],
+          selected: null
+        }
+      ] as { question: string; answer: number; options: string[]; selected: null; }[],
+      quizCompleted: false as boolean,
+      currentQuestion: 0 as number,
+      score: 0 as number
+    }
+  },
+  methods: {
+    GetCurrentQuestion() {
+      let question = this.questions[this.currentQuestion]
+      return question
+    },
+    SetAnswer(e: any) {
+      this.questions[this.currentQuestion].selected = e.target.value
+      if (this.questions[this.currentQuestion].selected != this.questions[this.currentQuestion].answer) return
+      this.score++
+    },
+    NextQuestion() {
+      if (this.currentQuestion < this.questions.length - 1) this.currentQuestion++
+      else this.quizCompleted = true
+    },
+    Return() {
+      router.push("/agenda")
     }
   }
-})
-
-
-const questions = ref([
-  {
-	question: 'What is Vue?',
-	answer: 0,
-	options: [
-		'A framework',
-		'A library',
-		'A type of hat'
-	],
-	selected: null
-  },
-  {
-	question: 'What is Vuex used for?',
-	answer: 2,
-	options: [
-		'Eating a delicious snack',
-		'Viewing things',
-		'State management'
-	],
-	selected: null
-  },
-  {
-	question: 'What is Vue Router?',
-	answer: 1,
-	options: [
-		'An ice cream maker',
-		'A routing library for Vue',
-		'Burger sauce'
-	],
-	selected: null
-  }
-])
-
-const quizCompleted = ref(false)
-const currentQuestion = ref(0)
-const score = computed(() => {
-	let value = 0
-	questions.value.map(q => {
-		if (q.selected != null && q.answer == q.selected) {
-			console.log('correct');
-			value++
-		}
-	})
-	return value
-})
-
-// const getCurrentQuestion:any = computed(() => {
-// 	let question = questions.value[currentQuestion.value]
-// 	question.index = currentQuestion.value
-// 	return question
-// })
-
-const SetAnswer = (e) => {
-	questions.value[currentQuestion.value].selected = e.target.value
-	e.target.value = null
-}
-
-const NextQuestion = () => {
-	if (currentQuestion.value < questions.value.length - 1) {
-		currentQuestion.value++
-		return
-	}
-	
-	quizCompleted.value = true
-}
+});
 </script>
-
-
 
 <style>
 * {
