@@ -16,8 +16,8 @@ const routes = [
     //}
   },
   {
-    path: '/HomePage',
-    name: 'homePage',
+    path: '/homePage',
+    name: 'HomePage',
     component: HomePage,
     meta: {
      authredirect: true,
@@ -26,7 +26,7 @@ const routes = [
   },
   {
     path: '/asessment',
-    name: 'asessment',
+    name: 'Asessment',
     component: AsessmentPage,
     meta:{
       requiresAuth:true,

@@ -69,8 +69,8 @@ export default defineComponent({
 		<section v-else>
 			<h2>You have finished the quiz!</h2>
 			<p>Your score is {{ score }}/{{ questions.length }}</p>
-      <button @click="Return">HOME</button>
 		</section>
+    <button @click="Return">HOME</button>
 	</main>
 </template>
 
@@ -134,13 +134,13 @@ export default defineComponent({
       else this.quizCompleted = true
     },
     Return() {
-      router.push("/agenda")
+      router.push("/homePage")
     }
   }
 });
 </script>
 
-<style>
+<style scoped>
 * {
 	margin: 0;
 	padding: 0;

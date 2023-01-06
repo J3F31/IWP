@@ -1,6 +1,6 @@
 <template>
   <Navbar/>
-  <section class="search">
+  <section v-if="!creatingPost" class="search">
     <button @click="GetPosts">All posts</button>
     <button @click="GetUserPosts">My posts</button>
     <select name="topics" id="topic-search">
@@ -13,14 +13,15 @@
       <option value="facilitating learners' digital competence">facilitating learners' digital competence</option>
     </select>
     <button @click="GetTopicPosts">Search by topic</button>
+    <button @click="creatingPost=!creatingPost">Create a post</button>
   </section>
-  <section class="post-submit">
+  <section v-if="creatingPost" class="post-submit">
     <input 
     class="post-title"
     id="title"
     type="text"
     placeholder="Give your post a title"
-    v-model="title"
+    v-model="postTitle"
     required
     />
     <br>
@@ -36,10 +37,10 @@
     <br>
     <input 
     class="post-body"
-    id="body"
+    id="post-body"
     type="text"
     placeholder="Write your post here"
-    v-model="body"
+    v-model="postBody"
     required
     />
     <br>
@@ -48,23 +49,46 @@
     type="submit" 
     value="Post"
     @click="SubmitPost">
+    <button @click="creatingPost=!creatingPost">Cancel</button>
   </section>
-  <section class="explore">
+  <section v-if="!creatingPost" class="explore">
     <div v-if="!postDisplay">
+      <div class="page-navigation">
+        <button v-if="pageNumber > 1" @click="TogglePage(-1)">page back</button>
+        <p>{{ pageNumber }}/{{ Math.ceil(posts.length / 5) > 0 ? Math.ceil((posts.length + 1) / 5) : 1 }}</p>
+        <button v-if="pageNumber <= posts.length / 5" @click="TogglePage(1)">page forward</button>
+      </div> 
       <section v-for="(post, index) in postPage" :key="post.id" class="post-explore" :id="'post' + index" @click="TogglePostView(index)">
         <h3>{{ post.title }}</h3>
         <h5>{{ post.topic }}</h5>
         <p class="post-content" :id="'content' + index">{{ post.body }}</p>
       </section>
-      <div class="page-navigation">
-        <button v-if="pageNumber > 1" @click="TogglePage(-1)">page back</button>
-        <p>{{ pageNumber }}/{{ Math.ceil(posts.length / 5) > 0 ? Math.ceil(posts.length / 5) : 1 }}</p>
-        <button v-if="pageNumber <= posts.length / 5" @click="TogglePage(1)">page forward</button>
-      </div> 
     </div>
+
     <section id="post-display">
     </section>
-    <button class="postbutton" @click="TogglePostView(undefined)" v-if="postDisplay">back</button>
+    <section v-if="postDisplay">
+      <input 
+      id="comment-body"
+      class="post-body"
+      type="text"
+      placeholder="Write your comment here"
+      required
+      />
+      <input
+      class="submit"
+      type="submit" 
+      value="Comment"
+      @click="SubmitComment">
+    </section>
+    <button class="postbutton" @click="TogglePostView(undefined)" v-if="postDisplay">Back</button>
+    <div class="commentsSection post-explore"  v-if="postDisplay">
+      <h3>Comments</h3>
+      <section id="comment-display" v-for="comment in commentPage" :key="comment.id" >
+        <h3>{{ comment.user }}</h3>
+        <p>{{ comment.comment }}</p>
+      </section>
+    </div>
   </section>
 </template>
 
@@ -74,6 +98,7 @@ import Navbar from '../components/NavBar.vue'
 
 import { getDocs, query, addDoc, collection, DocumentData, where } from "firebase/firestore";
 import { getFirestore } from 'firebase/firestore'
+import { getAuth } from '@firebase/auth';
 
 export default defineComponent({
   name: 'ForumPost',
@@ -82,18 +107,22 @@ export default defineComponent({
   },
   data() {
     return {
-      title: "" as string,
-      body: "" as string,
+      postTitle: "" as string,
+      postBody: "" as string,
       userId: this.$userId.toString(),
+      userName: "" as string | null | undefined,
       posts: [] as Array<DocumentData>,
       postPage: [] as Array<DocumentData>,
+      commentPage: [] as Array<DocumentData>,
       postDisplay: false as boolean,
-      pageNumber: 1 as number
+      pageNumber: 1 as number,
+      creatingPost: false as boolean,
+      selectedPostRefPath: undefined as string | undefined
     }
   },
   mounted() {
     this.GetPosts()
-    
+    this.userName = getAuth().currentUser?.email;
   },
   methods: {
     TogglePage(pageIncrement: number) {
@@ -111,6 +140,7 @@ export default defineComponent({
       })
     },
     TogglePostView(index: number | undefined) {
+      this.commentPage = []
       this.postDisplay = !this.postDisplay
       const display = document.getElementById('post-display')
       display?.childNodes.forEach((child) => {
@@ -122,6 +152,7 @@ export default defineComponent({
       const post = document.getElementById('post' + index) as HTMLElement
       const clone = post.cloneNode(true)
       display?.append(clone)
+      this.getCurrentPostId(post.children[0].textContent, content?.textContent, post.children[1].textContent)
     },
     async GetPosts(): Promise<void> {
       this.pageNumber = 1
@@ -175,21 +206,52 @@ export default defineComponent({
       })
     },
     async SubmitPost(): Promise<void> {
-      if (this.title == "" || this.body == "") return
+      if (this.postTitle == "" || this.postBody == "") return
       const select = document.getElementById('topic-select') as HTMLSelectElement
       const value = select?.value
       const db = getFirestore()
       await addDoc(collection(db, "Users", this.userId, "Posts"), {
-        title: this.title,
+        title: this.postTitle,
         topic: value,
-        body: this.body
+        body: this.postBody
       });
       select.value = ''
       const title = document.getElementById('title') as HTMLInputElement
       title.value = ''
-      const body = document.getElementById('body') as HTMLInputElement
+      const body = document.getElementById('post-body') as HTMLInputElement
       body.value = ''
-
+    },
+    async SubmitComment() {
+      const comment = document.getElementById('comment-body') as HTMLInputElement
+      if (comment.value == "") return
+      const db = getFirestore()
+      const ref = collection(db, `${this.selectedPostRefPath}/Comments`)
+      await addDoc(ref, {
+        comment: comment.value,
+        user: this.userName
+      })
+      comment.value = ''
+    },
+    async getCurrentPostId(title: string | null, body: string | null | undefined, topic: string | null) {
+      const db = getFirestore()
+      const snapshot = await getDocs(collection(db, "Users"))
+      snapshot.forEach(async (doc) => {
+        const q = query(collection(db, "Users", doc.id, "Posts"),where("title", "==", title),where("body", "==", body),where("topic", "==", topic))
+        const matches = await getDocs(q)
+        if (matches.docs.length != 0) {
+          this.selectedPostRefPath = matches.docs[0].ref.path
+          this.getCurrentPostComments()
+        }
+      })
+    },
+    async getCurrentPostComments() {
+      const db = getFirestore()
+      console.log(this.selectedPostRefPath)
+      const q = query(collection(db, `${this.selectedPostRefPath}/Comments`))
+      const comments = await getDocs(q)
+      comments.docs.forEach((doc) => {
+        this.commentPage.push(doc.data())
+      })
     }
   }
 });

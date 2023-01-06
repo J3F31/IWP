@@ -35,15 +35,13 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.dropdown {
+/*.dropdown {
   margin: 0.;
   padding: 2rem;
   width: 20%;
   height: 40%;
   
   position: sticky;
-/* 
-  it was absolute but i changed it becase everething was on top of it */
 
   transform: translate(-50%, -50%);
     
@@ -52,7 +50,7 @@ export default defineComponent({
   opacity: 90%;
   border-radius: 7px;
   z-index: 1000;
-}
+}*/
 .signout {
   width: 80px;
   height: 50px;
