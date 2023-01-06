@@ -63,7 +63,7 @@ import Navbar from '../components/NavBar.vue'
 
 export default defineComponent({
   name: 'AsessmentPage',
-  component: {
+  components: {
     Navbar
   },
   data() {
