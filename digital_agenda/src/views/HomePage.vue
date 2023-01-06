@@ -24,7 +24,7 @@
   });
   </script>
 <style scoped>
-.info {
+.info p{
     font-size: 20px;
     margin: 0;
     height: auto;
@@ -34,12 +34,18 @@
     top: 40%;
     left: 30%;
     transform: translate(-50%, -50%);
-    
+    text-align: left;
   }
   body{
     background-image: url('../../public/assets/background1.png');
   }
-
+  .info h1{
+    color: rgb(61, 53, 53);
+    /* left: 30%; */
+    margin-left: 13rem;
+    margin-top: 8rem;
+    
+  }
   .back{
   margin: 0;
   height: 100vh;

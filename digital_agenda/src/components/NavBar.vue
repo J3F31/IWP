@@ -72,12 +72,16 @@ a:hover {
 .profile {
   grid-column-start: 6;
   grid-column-end: 7;
-  width: 70px;
-  height: 70px;
-  /* background-color: #333; */
+  width: 50px;
+  height: 50px;
+  background-color: #333;
   background-image:url("../../public/assets/profile-icon-png-908.png") ;
   background-size: cover;
-  margin: .8rem;
+  margin: 1vw;
+  
+}
+.profile:hover{
+  background-color: #ea6026;
 }
 .home{
   grid-column-start: 2;
@@ -86,7 +90,7 @@ a:hover {
 }
 .user {
   top: 30%;
-  left: 87%;
+  left: 77%;
 }
 .logo{
   grid-column-start: 1;
@@ -97,4 +101,6 @@ a:hover {
   color: #333333;
   margin: 1.7rem;
 }
+
+
 </style>

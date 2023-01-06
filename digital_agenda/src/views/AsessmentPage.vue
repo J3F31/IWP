@@ -153,7 +153,7 @@ h1 {
 }
 
 .quiz {
-	background-color: #382a4b;
+	background-color: #cdcbcf;
 	padding: 1rem;
 	width: 100%;
 	max-width: 640px;
@@ -182,18 +182,18 @@ h1 {
 .option {
 	padding: 1rem;
 	display: block;
-	background-color: #271c36;
+	background-color: #7d7b80;
 	margin-bottom: 0.5rem;
 	border-radius: 0.5rem;
 	cursor: pointer;
 }
 
 .option:hover {
-	background-color: #2d213f;
+	background-color: #e47b19;
 }
 
 .option.correct {
-	background-color: #2cce7d;
+	background-color: #e47b19;
 }
 
 .option.wrong {
@@ -218,7 +218,7 @@ button {
 	border: none;
 	cursor: pointer;
 	padding: 0.5rem 1rem;
-	background-color: #2cce7d;
+	background-color: #e47b19;
 	color: #2d213f;
 	font-weight: 700;
 	text-transform: uppercase;

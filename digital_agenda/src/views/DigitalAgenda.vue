@@ -45,23 +45,26 @@ export default defineComponent({
 
 <style scoped>
 .poster{
- background-color:#8b8888;
+ background-color:#cfcdcd;
   height: 70vh;
   width: 85vw;
   margin: 2.5rem;
-  margin-left: 8rem;
+  margin-left: 10rem;
   position: relative;
   display: grid;
-  grid-template-columns:   3fr 1fr; 
+  grid-template-columns:   3fr 2fr; 
   grid-row: auto auto auto auto
 }
 .posterimage{
   grid-column-start:2 ;
   background-image: url("../../public/assets/poster1.png");
   margin-right: 5.5rem;
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat; */
   /* margin: 1.2rem; */
   /* width: 200%; */
+margin: 3rem;
+background-size: cover;
+
 }
 .poster p{
   font-size: 15px;
@@ -71,12 +74,13 @@ export default defineComponent({
   font-size: 18px;
   position: absolute;
   top: 40%;
-  left: 17%;
+  left: 20%;
   transform: translate(-50%, -50%);
+  text-align: left;
 }
 .poster h1{
   margin: 1.5rem;
-  left: 30%;
+  left: 40%;
   color: #246068;
   font-size: 30px;
   
