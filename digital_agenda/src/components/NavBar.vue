@@ -4,7 +4,8 @@
     <router-link to="/forum" class="forum">FORUM</router-link>
     <router-link to="/asessment" class="asessment">ASESSMENT</router-link>
     <router-link to="/homePage" class="home">HOME</router-link>
-    <button class="profile" @click="showUser=!showUser"></button>
+    <button class="profile"  @click="showUser=!showUser"></button>
+    <img class="buttonimg">
     <UserInfo class="user" v-if="showUser"/>
     <div class="logo">LoGO</div>
     
@@ -74,7 +75,8 @@ a:hover {
   width: 70px;
   height: 70px;
   /* background-color: #333; */
-  background-image:url("../../public/assets/profile-icon-png-908.png");
+  background-image:url("../../public/assets/profile-icon-png-908.png") ;
+  background-size: cover;
   margin: .8rem;
 }
 .home{
@@ -90,7 +92,7 @@ a:hover {
   grid-column-start: 1;
   grid-column-end: 3;
   grid-row: 1;
-  width: 140px;
+  width: 170px;
   background-image: url("../../public/assets/hanzeLogo.png");
   color: #333333;
   margin: 1.7rem;

@@ -1,5 +1,6 @@
 <template>
     <Navbar/>
+    <div class="back"></div>
     <section class="info">
     <h1>IGNITION</h1>
     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque modi asperiores laboriosam
@@ -37,6 +38,22 @@
   }
   body{
     background-image: url('../../public/assets/background1.png');
+  }
+
+  .back{
+  margin: 0;
+  height: 100vh;
+  width: 100%;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  background-image: url("../../public/assets/background1.png");
+  background-size: 100% auto;
+  z-index: -1;
+  opacity: .2;
   }
 
 </style>

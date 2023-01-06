@@ -1,24 +1,6 @@
-<!-- <template>
-  <Navbar/>
-  <section>
-    <h1>Example</h1>
-    <p>This will be a asessmrnt agenda!</p>
-  </section>
-</template>
-
-<script lang='ts'>
-import { defineComponent } from 'vue';
-import Navbar from '../components/NavBar.vue'
-
-export default defineComponent({
-  name: 'AsessmentPage',
-  components: {
-    Navbar
-  }
-});
-</script> -->
 
 <template>
+	<Navbar/>
 	<main class="app">
 		<h1>The Quiz</h1>
 		
@@ -77,9 +59,13 @@ export default defineComponent({
 <script lang="ts">
 import { defineComponent } from 'vue';
 import router from '@/router';
+import Navbar from '../components/NavBar.vue'
 
 export default defineComponent({
   name: 'AsessmentPage',
+  component: {
+    Navbar
+  },
   data() {
     return {
       questions: [
@@ -149,7 +135,7 @@ export default defineComponent({
 }
 
 body {
-	background-color: #271c36;
+	background-color: #ffffff;
 	color: #FFF;
 }
 
