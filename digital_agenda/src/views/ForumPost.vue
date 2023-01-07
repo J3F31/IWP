@@ -153,7 +153,7 @@ export default defineComponent({
       const post = document.getElementById('post' + index) as HTMLElement
       const clone = post.cloneNode(true)
       display?.append(clone)
-      this.getCurrentPostId(post.children[0].textContent, content?.textContent, post.children[1].textContent)
+      this.getCurrentPostId(post.children[0].textContent, content?.textContent, post.children[1].textContent, post.children[2].textContent)
     },
     async GetPosts(): Promise<void> {
       this.pageNumber = 1
@@ -237,11 +237,11 @@ export default defineComponent({
       comment.value = ''
       this.getCurrentPostComments()
     },
-    async getCurrentPostId(title: string | null, body: string | null | undefined, topic: string | null) {
+    async getCurrentPostId(title: string | null, body: string | null | undefined, user: string | null, topic: string | null) {
       const db = getFirestore()
       const snapshot = await getDocs(collection(db, "Users"))
       snapshot.forEach(async (doc) => {
-        const q = query(collection(db, "Users", doc.id, "Posts"),where("title", "==", title),where("body", "==", body),where("topic", "==", topic))
+        const q = query(collection(db, "Users", doc.id, "Posts"),where("title", "==", title),where("body", "==", body),where("user", "==", user),where("topic", "==", topic))
         const matches = await getDocs(q)
         if (matches.docs.length != 0) {
           this.selectedPostRefPath = matches.docs[0].ref.path
