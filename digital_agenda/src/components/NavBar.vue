@@ -5,8 +5,7 @@
     <router-link to="/forum" class="forum">FORUM</router-link>
     <router-link to="/asessment" class="asessment">ASESSMENT</router-link>
     <router-link to="/homePage" class="home">HOME</router-link>
-    <button class="profile"  @click="showUser=!showUser"></button>
-    <img class="buttonimg">
+    <button class="profile" @click="showUser=!showUser"></button>
     <UserInfo class="user" v-if="showUser"/>
   </div>
   
@@ -92,8 +91,11 @@ a:hover {
   grid-row: 1;
 }
 .user {
-  top: 30%;
-  left: 77%;
+  grid-column-start: 6;
+  grid-column-end: 8;
+  grid-row: 2;
+  
+  color: azure;
 }
 .logo{
   grid-column-start: 1;

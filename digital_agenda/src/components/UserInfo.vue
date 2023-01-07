@@ -2,7 +2,6 @@
   <section class="dropdown">
     <h3>{{ user }}</h3>
     <button class="signout" @click="SignOut">Sign Out</button>
-    <img class="buttonimg">
   </section>
 </template>
 
@@ -36,22 +35,6 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.dropdown {
-  margin: 2rem;
-  padding: 1rem;
-  width: 30%;
-  height: 40%;
-  
-  position: sticky;
-
-  transform: translate(-50%, -50%);
-    
-  background-color: #333333;
-  color: aliceblue;
-  opacity: 90%;
-  border-radius: 7px;
-  z-index: 1000;
-}
 .signout {
   width: 80px;
   height: 50px;

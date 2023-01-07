@@ -122,12 +122,6 @@ export default defineComponent({
 </script>
 
 <style scoped>
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: 'Montserrat', sans-serif;
-}
 
 body {
 	background-color: #ffffff;
@@ -139,7 +133,6 @@ body {
 	flex-direction: column;
 	align-items: center;
 	padding: 2rem;
-	height: 100vh;
 }
 
 h1 {
