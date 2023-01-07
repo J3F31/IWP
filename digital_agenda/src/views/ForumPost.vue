@@ -287,7 +287,6 @@ input{
   background-color: #adaba9;
   font-size: 15px;
   margin :1.5rem;
-  height: 9vh;
 }
 .post-content {
   display: none;

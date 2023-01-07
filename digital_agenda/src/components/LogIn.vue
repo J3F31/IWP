@@ -81,8 +81,4 @@ export default defineComponent({
   grid-row-start: 5;
   grid-row-end: 6;
 }
-.submit:hover{
-  background-color: #ea6026;
-  color: azure;
-}
 </style>

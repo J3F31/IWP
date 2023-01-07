@@ -1,6 +1,24 @@
+<!-- <template>
+  <Navbar/>
+  <section>
+    <h1>Example</h1>
+    <p>This will be a asessmrnt agenda!</p>
+  </section>
+</template>
+
+<script lang='ts'>
+import { defineComponent } from 'vue';
+import Navbar from '../components/NavBar.vue'
+
+export default defineComponent({
+  name: 'AsessmentPage',
+  components: {
+    Navbar
+  }
+});
+</script> -->
 
 <template>
-	<Navbar/>
 	<main class="app">
 		<h1>The Quiz</h1>
 		
@@ -59,13 +77,9 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import router from '@/router';
-import Navbar from '../components/NavBar.vue'
 
 export default defineComponent({
   name: 'AsessmentPage',
-  components: {
-    Navbar
-  },
   data() {
     return {
       questions: [
@@ -135,7 +149,7 @@ export default defineComponent({
 }
 
 body {
-	background-color: #ffffff;
+	background-color: #271c36;
 	color: #FFF;
 }
 
@@ -153,7 +167,7 @@ h1 {
 }
 
 .quiz {
-	background-color: #cdcbcf;
+	background-color: #382a4b;
 	padding: 1rem;
 	width: 100%;
 	max-width: 640px;
@@ -182,18 +196,18 @@ h1 {
 .option {
 	padding: 1rem;
 	display: block;
-	background-color: #7d7b80;
+	background-color: #271c36;
 	margin-bottom: 0.5rem;
 	border-radius: 0.5rem;
 	cursor: pointer;
 }
 
 .option:hover {
-	background-color: #e47b19;
+	background-color: #2d213f;
 }
 
 .option.correct {
-	background-color: #e47b19;
+	background-color: #2cce7d;
 }
 
 .option.wrong {
@@ -218,7 +232,7 @@ button {
 	border: none;
 	cursor: pointer;
 	padding: 0.5rem 1rem;
-	background-color: #e47b19;
+	background-color: #2cce7d;
 	color: #2d213f;
 	font-weight: 700;
 	text-transform: uppercase;

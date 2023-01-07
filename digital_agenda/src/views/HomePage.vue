@@ -1,6 +1,5 @@
 <template>
     <Navbar/>
-    <div class="back"></div>
     <section class="info">
     <h1>IGNITION</h1>
     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque modi asperiores laboriosam
@@ -24,7 +23,7 @@
   });
   </script>
 <style scoped>
-.info p{
+.info {
     font-size: 20px;
     margin: 0;
     height: auto;
@@ -34,32 +33,10 @@
     top: 40%;
     left: 30%;
     transform: translate(-50%, -50%);
-    text-align: left;
+    
   }
   body{
     background-image: url('../../public/assets/background1.png');
-  }
-  .info h1{
-    color: rgb(61, 53, 53);
-    /* left: 30%; */
-    margin-left: 13rem;
-    margin-top: 8rem;
-    
-  }
-  .back{
-  margin: 0;
-  height: 100vh;
-  width: 100%;
-
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  background-image: url("../../public/assets/background1.png");
-  background-size: 100% auto;
-  z-index: -1;
-  opacity: .2;
   }
 
 </style>
