@@ -5,7 +5,8 @@
     <router-link to="/forum" class="forum">FORUM</router-link>
     <router-link to="/asessment" class="asessment">ASESSMENT</router-link>
     <router-link to="/homePage" class="home">HOME</router-link>
-    <button class="profile" @click="showUser=!showUser"></button>
+    <button class="profile"  @click="showUser=!showUser"></button>
+    <img class="buttonimg">
     <UserInfo class="user" v-if="showUser"/>
   </div>
   
@@ -66,15 +67,16 @@ a:hover {
 .asessment{
   grid-column-start: 6;
   grid-column-end: 7;
-  grid-row: 1;
-}
-.profile {
-  grid-column-start: 7;
-  grid-column-end: 8;
   width: 50px;
   height: 50px;
-  background-image:url("../../public/assets/profile-icon-png-908.png");
-  margin: .8rem;
+  background-color: #333;
+  background-image:url("../../public/assets/profile-icon-png-908.png") ;
+  background-size: cover;
+  margin: 1vw;
+  
+}
+.profile:hover{
+  background-color: #ea6026;
 }
 .home{
   grid-column-start: 3;
@@ -83,18 +85,19 @@ a:hover {
 }
 .user {
   top: 30%;
-  left: 87%;
+  left: 77%;
 }
 .logo{
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row: 1;
-  width: 200px;
-  height: 50px;
+  width: 170px;
   background-image: url("../../public/assets/hanzeLogo.png");
   background-repeat: no-repeat;
   background-size: contain;
   color: #333333;
   margin: .8rem;
 }
+
+
 </style>
