@@ -35,14 +35,14 @@
       <option value="facilitating learners' digital competence">facilitating learners' digital competence</option>
     </select>
     <br>
-    <input 
+    <textarea 
     class="post-body"
     id="post-body"
     type="text"
     placeholder="Write your post here"
     v-model="postBody"
     required
-    />
+    ></textarea>
     <br>
     <input 
     class="submit"
@@ -60,6 +60,7 @@
       </div> 
       <section v-for="(post, index) in postPage" :key="post.id" class="post-explore" :id="'post' + index" @click="TogglePostView(index)">
         <h3>{{ post.title }}</h3>
+        <h4>{{ post.user }}</h4>
         <h5>{{ post.topic }}</h5>
         <p class="post-content" :id="'content' + index">{{ post.body }}</p>
       </section>
@@ -68,13 +69,13 @@
     <section id="post-display">
     </section>
     <section v-if="postDisplay">
-      <input 
+      <textarea 
       id="comment-body"
       class="post-body"
       type="text"
       placeholder="Write your comment here"
       required
-      />
+      ></textarea>
       <input
       class="submit"
       type="submit" 
@@ -122,7 +123,7 @@ export default defineComponent({
   },
   mounted() {
     this.GetPosts()
-    this.userName = getAuth().currentUser?.email;
+    this.userName = getAuth().currentUser?.email?.split("@")[0]
   },
   methods: {
     TogglePage(pageIncrement: number) {
@@ -212,6 +213,7 @@ export default defineComponent({
       const db = getFirestore()
       await addDoc(collection(db, "Users", this.userId, "Posts"), {
         title: this.postTitle,
+        user: this.userName,
         topic: value,
         body: this.postBody
       });
@@ -220,6 +222,8 @@ export default defineComponent({
       title.value = ''
       const body = document.getElementById('post-body') as HTMLInputElement
       body.value = ''
+      this.creatingPost = !this.creatingPost
+      this.GetPosts()
     },
     async SubmitComment() {
       const comment = document.getElementById('comment-body') as HTMLInputElement
@@ -231,6 +235,7 @@ export default defineComponent({
         user: this.userName
       })
       comment.value = ''
+      this.getCurrentPostComments()
     },
     async getCurrentPostId(title: string | null, body: string | null | undefined, topic: string | null) {
       const db = getFirestore()
@@ -245,8 +250,8 @@ export default defineComponent({
       })
     },
     async getCurrentPostComments() {
+      this.commentPage.length == 0? null : this.commentPage = []
       const db = getFirestore()
-      console.log(this.selectedPostRefPath)
       const q = query(collection(db, `${this.selectedPostRefPath}/Comments`))
       const comments = await getDocs(q)
       comments.docs.forEach((doc) => {
@@ -286,7 +291,17 @@ input{
 .post-content {
   display: none;
 }
-button{
+.post-title {
+  width: 40%;
+}
+.post-body {
+  width: 40%;
+  height: 100px;
+  padding: 10px;
+  font-family: inherit; 
+}
+button,
+.submit {
   background-color: #333333;
   color: aliceblue;
   margin: 0.2rem;
@@ -294,9 +309,11 @@ button{
   font-size: large;
 }
 
-button:hover{
+button:hover,
+.submit:hover {
   background-color: #ea6026;
   color: azure;
+  cursor: pointer;
 }
 .expolore h3{
 
