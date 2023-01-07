@@ -263,7 +263,6 @@ export default defineComponent({
 </script>
 
 <style scoped>
-
 .page-navigation {
   display: flex;
   flex-direction: row;
@@ -286,8 +285,7 @@ input{
   cursor: pointer;
   background-color: #adaba9;
   font-size: 15px;
-  margin :1.5rem;
-  height: 9vh;
+  margin: 1.5rem;
 }
 .post-content {
   display: none;

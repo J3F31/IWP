@@ -67,16 +67,24 @@ a:hover {
 .asessment{
   grid-column-start: 6;
   grid-column-end: 7;
+  grid-row: 1;
+}
+.profile {
+  grid-column-start: 7;
+  grid-column-end: 8;
+  grid-row: 1;
   width: 50px;
   height: 50px;
   background-color: #333;
-  background-image:url("../../public/assets/profile-icon-png-908.png") ;
+  background-image:url("../../public/assets/profile-icon-png-908.png");
   background-size: cover;
   margin: 1vw;
-  
+  border-radius: 7px;
+  border: none;
 }
 .profile:hover{
   background-color: #ea6026;
+  cursor: pointer;
 }
 .home{
   grid-column-start: 3;

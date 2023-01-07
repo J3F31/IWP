@@ -1,4 +1,3 @@
-
 <template>
 	<Navbar/>
 	<main class="app">
@@ -52,7 +51,6 @@
 			<h2>You have finished the quiz!</h2>
 			<p>Your score is {{ score }}/{{ questions.length }}</p>
 		</section>
-    <button @click="Return">HOME</button>
 	</main>
 </template>
 
@@ -118,9 +116,6 @@ export default defineComponent({
     NextQuestion() {
       if (this.currentQuestion < this.questions.length - 1) this.currentQuestion++
       else this.quizCompleted = true
-    },
-    Return() {
-      router.push("/homePage")
     }
   }
 });
