@@ -91,10 +91,10 @@ a:hover {
   grid-row: 1;
 }
 .user {
-  grid-column-start: 6;
+  grid-column-start: 1;
   grid-column-end: 8;
   grid-row: 2;
-  
+  margin-left: .8rem;
   color: azure;
 }
 .logo{
