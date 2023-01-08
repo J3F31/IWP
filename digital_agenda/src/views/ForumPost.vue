@@ -62,6 +62,7 @@
         <h3>{{ post.title }}</h3>
         <h4>{{ post.user }}</h4>
         <h5>{{ post.topic }}</h5>
+        <p>{{ post.timestamp }}</p>
         <p class="post-content" :id="'content' + index">{{ post.body }}</p>
       </section>
     </div>
@@ -126,6 +127,15 @@ export default defineComponent({
     this.userName = getAuth().currentUser?.email?.split("@")[0]
   },
   methods: {
+    GetTime(): string {
+      const date = new Date()
+      const year = date.getFullYear()
+      const month = date.getMonth() + 1
+      const day = date.getDate()
+      const hour = date.getHours()
+      const minute = (date.getMinutes() < 10 ? '0' : '') + date.getMinutes()
+      return `${day}-${month}-${year} ${hour}:${minute}`
+    },
     TogglePage(pageIncrement: number) {
       this.postPage = []
       this.pageNumber += pageIncrement
@@ -153,7 +163,7 @@ export default defineComponent({
       const post = document.getElementById('post' + index) as HTMLElement
       const clone = post.cloneNode(true)
       display?.append(clone)
-      this.getCurrentPostId(post.children[0].textContent, content?.textContent, post.children[1].textContent, post.children[2].textContent)
+      this.getCurrentPostId(post.children[0].textContent, post.children[1].textContent, post.children[2].textContent)
     },
     async GetPosts(): Promise<void> {
       this.pageNumber = 1
@@ -173,7 +183,7 @@ export default defineComponent({
         })
       })
     },
-    async GetUserPosts() {
+    async GetUserPosts(): Promise<void> {
       this.pageNumber = 1
       this.postPage = []
       this.posts = []
@@ -186,7 +196,7 @@ export default defineComponent({
         this.postPage.push(doc.data())
       })
     },
-    async GetTopicPosts() {
+    async GetTopicPosts(): Promise<void> {
       this.pageNumber = 1
       this.postPage = []
       this.posts = []
@@ -208,24 +218,26 @@ export default defineComponent({
     },
     async SubmitPost(): Promise<void> {
       if (this.postTitle == "" || this.postBody == "") return
-      const select = document.getElementById('topic-select') as HTMLSelectElement
-      const value = select?.value
+      const timestamp = this.GetTime()
+      const selectTopic = document.getElementById('topic-select') as HTMLSelectElement
+      const topic = selectTopic?.value
       const db = getFirestore()
       await addDoc(collection(db, "Users", this.userId, "Posts"), {
         title: this.postTitle,
         user: this.userName,
-        topic: value,
+        topic: topic,
+        timestamp: timestamp,
         body: this.postBody
       });
-      select.value = ''
+      selectTopic.value = ''
       const title = document.getElementById('title') as HTMLInputElement
       title.value = ''
       const body = document.getElementById('post-body') as HTMLInputElement
       body.value = ''
-      this.creatingPost = !this.creatingPost
       this.GetPosts()
+      this.creatingPost = !this.creatingPost
     },
-    async SubmitComment() {
+    async SubmitComment(): Promise<void> {
       const comment = document.getElementById('comment-body') as HTMLInputElement
       if (comment.value == "") return
       const db = getFirestore()
@@ -237,11 +249,11 @@ export default defineComponent({
       comment.value = ''
       this.getCurrentPostComments()
     },
-    async getCurrentPostId(title: string | null, body: string | null | undefined, user: string | null, topic: string | null) {
+    async getCurrentPostId(title: string | null, user: string | null, topic: string | null): Promise<void> {
       const db = getFirestore()
       const snapshot = await getDocs(collection(db, "Users"))
       snapshot.forEach(async (doc) => {
-        const q = query(collection(db, "Users", doc.id, "Posts"),where("title", "==", title),where("body", "==", body),where("user", "==", user),where("topic", "==", topic))
+        const q = query(collection(db, "Users", doc.id, "Posts"),where("title", "==", title),where("user", "==", user),where("topic", "==", topic))
         const matches = await getDocs(q)
         if (matches.docs.length != 0) {
           this.selectedPostRefPath = matches.docs[0].ref.path
@@ -249,7 +261,7 @@ export default defineComponent({
         }
       })
     },
-    async getCurrentPostComments() {
+    async getCurrentPostComments(): Promise<void> {
       this.commentPage.length == 0? null : this.commentPage = []
       const db = getFirestore()
       const q = query(collection(db, `${this.selectedPostRefPath}/Comments`))
