@@ -1,10 +1,10 @@
 <template>
   <div class="nav">
     <div class="logo"></div>
-    <router-link to="/agenda" class="agenda">AGENDA</router-link>
-    <router-link to="/forum" class="forum">FORUM</router-link>
-    <router-link to="/asessment" class="asessment">ASESSMENT</router-link>
-    <router-link to="/homePage" class="home">HOME</router-link>
+    <router-link to="/agenda" id="agenda" class="agenda">AGENDA</router-link>
+    <router-link to="/forum" id="forum" class="forum">FORUM</router-link>
+    <router-link to="/asessment" id="assessment" class="assessment">ASSESSMENT</router-link>
+    <router-link to="/homePage" id="home" class="home">HOME</router-link>
     <button class="profile" @click="showUser=!showUser"></button>
     <UserInfo class="user" v-if="showUser"/>
   </div>
@@ -18,6 +18,9 @@ import UserInfo from './UserInfo.vue'
 
 export default defineComponent({
   name: 'NavBar',
+  props: {
+    selectedId: String
+  },
   components: {
     UserInfo
   },
@@ -25,13 +28,20 @@ export default defineComponent({
     return {
       showUser: false as boolean
     }
+  },
+  mounted() {
+    console.log(this.selectedId)
+    if (this.selectedId == null) return
+    let string = this.selectedId
+    const link = document.getElementById(string)
+    link!.style.backgroundColor = '#40a8de'
   }
 });
 </script>
 
 <style scoped>
 .nav {
-  background-color: #333333;
+  background-color: var(--darkblue);
   width: 100%;
   height: auto;
   top: 0;
@@ -42,16 +52,15 @@ export default defineComponent({
   font-size: 25px;
 }
 a {
-  background-color: #333333;
+  background-color: var(--orange);
   border-radius: 7px;
   padding: .6rem 2rem .6rem 2rem;
   margin: .8rem;
   text-decoration: none;
-  color: azure;
+  color: var(--gray);
 }
 a:hover {
-  background-color: #ea6026;
-  color: #333333;
+  background-color: var(--lightblue);
 }
 .agenda {
   grid-column-start: 4;
@@ -63,7 +72,7 @@ a:hover {
   grid-column-end: 6;
   grid-row: 1;
 }
-.asessment{
+.assessment{
   grid-column-start: 6;
   grid-column-end: 7;
   grid-row: 1;
@@ -74,15 +83,15 @@ a:hover {
   grid-row: 1;
   width: 50px;
   height: 50px;
-  background-color: #333;
-  background-image:url("../../public/assets/profile-icon-png-908.png");
+  background-color: var(--darkblue);
+  background-image:url("../../public/assets/Icon_Profile.png");
   background-size: cover;
-  margin: 1vw;
+  margin: .8rem;
+  padding: 0.6rem;
   border-radius: 7px;
   border: none;
 }
 .profile:hover{
-  background-color: #ea6026;
   cursor: pointer;
 }
 .home{
@@ -95,19 +104,18 @@ a:hover {
   grid-column-end: 8;
   grid-row: 2;
   margin-left: .8rem;
-  color: azure;
+  color: var(--gray);
 }
 .logo{
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row: 1;
   width: 170px;
-  background-image: url("../../public/assets/hanzeLogo.png");
+  background-image: url("../../public/assets/Logo_Hanze.png");
   background-repeat: no-repeat;
   background-size: contain;
-  color: #333333;
   margin: .8rem;
+  padding: 0.6rem;
+  border-radius: 7px;
 }
-
-
 </style>

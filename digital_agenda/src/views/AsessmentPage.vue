@@ -1,7 +1,7 @@
 <template>
-	<Navbar/>
+	<Navbar selected-id="assessment"/>
 	<main class="app">
-		<h1>The Quiz</h1>
+		<h1>Self-assessment</h1>
 		
 		<section class="quiz" v-if="!quizCompleted">
 			<div class="quiz-info">
@@ -45,7 +45,7 @@
 		</section>
 
 		<section v-else>
-			<h2>You have finished the quiz!</h2>
+			<h2>You have finished the self-assessment!</h2>
 			<!--<p>Your score is {{ score }}/{{ questions.length }}</p>-->
 		</section>
 	</main>
@@ -177,12 +177,6 @@ export default defineComponent({
 </script>
 
 <style scoped>
-
-body {
-	background-color: #ffffff;
-	/*color: #FFF;*/
-}
-
 .app {
 	display: flex;
 	flex-direction: column;
@@ -196,7 +190,7 @@ h1 {
 }
 
 .quiz {
-	background-color: #cdcbcf;
+	background-color: var(--gray);
 	padding: 1rem;
 	width: 100%;
 	max-width: 640px;
@@ -209,12 +203,12 @@ h1 {
 }
 
 .quiz-info .question {
-	color: #8F8F8F;
+	color: var(--darkblue);
 	font-size: 1.25rem;
 }
 
 .quiz-info.score {
-	color: #FFF;
+	color: var(--gray);
 	font-size: 1.25rem;
 }
 
@@ -225,22 +219,21 @@ h1 {
 .option {
 	padding: 1rem;
 	display: block;
-	background-color: #7d7b80;
+	background-color: #cccccc;
 	margin-bottom: 0.5rem;
 	border-radius: 0.5rem;
 	cursor: pointer;
 }
 
 .option:hover {
-	background-color: #e47b19;
+	background-color: var(--orange);
+}
+.option.disabled:hover {
+  background-color: #cccccc;
 }
 
 .option.selected {
-	background-color: #e47b19;
-}
-
-.option.wrong {
-	background-color: #ff5a5f;
+	background-color: var(--lightblue);
 }
 
 .option:last-of-type {
@@ -261,8 +254,8 @@ button {
 	border: none;
 	cursor: pointer;
 	padding: 0.5rem 1rem;
-	background-color: #e47b19;
-	color: #2d213f;
+	background-color: var(--orange);
+	color: var(--gray);
 	font-weight: 700;
 	text-transform: uppercase;
 	font-size: 1.2rem;
@@ -271,17 +264,5 @@ button {
 
 button:disabled {
 	opacity: 0.5;
-}
-
-h2 {
-	font-size: 2rem;
-	margin-bottom: 2rem;
-	text-align: center;
-}
-
-p {
-	color: #8F8F8F;
-	font-size: 1.5rem;
-	text-align: center;
 }
 </style>

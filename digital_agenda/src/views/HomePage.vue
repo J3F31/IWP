@@ -1,11 +1,11 @@
 <template>
-  <Navbar/>
+  <Navbar selected-id="home"/>
   <div class="back"></div>
   <section class="info">
     <h1>IGNITION</h1>
     <p>Welcome to the IGNITION platform, where you can increase your level of digital literacy. 
-We provide a accessible way to learn the new digital tools, that will help you as a teacher, important advices to keep in mind and a online forum, where you can ask questions and get feedback from your fellow teachers. 
-You can login immediately with your Hanze account and start your journey in improving your digital literacy!
+      We provide a accessible way to learn the new digital tools, that will help you as a teacher, important advices to keep in mind and a online forum, where you can ask questions and get feedback from your fellow teachers. 
+      You can login immediately with your Hanze account and start your journey in improving your digital literacy!
     </p>
   </section>
 </template>
@@ -30,11 +30,8 @@ export default defineComponent({
   width: 40%;
   margin-left: 13rem;
 }
-body{
-  background-image: url('../../public/assets/background1.png');
-}
 .info h1{
-  color: rgb(61, 53, 53);
+  color: var(--darkblue);
   margin-left: 13rem;
   margin-top: 8rem;
 }
@@ -42,13 +39,9 @@ body{
   margin: 0;
   height: 100vh;
   width: 100%;
+  position: fixed;
 
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  background-image: url("../../public/assets/background1.png");
+  background-image: url("../../public/assets/Background.png");
   background-repeat: no-repeat;
   background-size: 100% auto;
   z-index: -1;

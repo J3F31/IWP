@@ -63,13 +63,16 @@ export default defineComponent({
 .signout {
   width: 80px;
   height: 50px;
-  background-color: black;
-  color: azure;
+  background-color: var(--orange);
+  color: var(--gray);
   padding: .3rem;
-  font-size:small; 
+  font-size: small; 
+  border-radius: 7px;
+  border: none;
 }
 .signout:hover{
-  background-color: #ea6026;
-  color: black;
+  background-color: var(--lightblue);
+  color: var(--gray);
+  cursor: pointer;
 }
 </style>

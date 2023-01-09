@@ -1,6 +1,6 @@
 <template>
-  <Navbar/>
-  <section v-if="!creatingPost" class="search">
+  <Navbar selected-id="forum"/>
+  <section v-if="!creatingPost && !postDisplay" class="search">
     <button @click="GetPosts">All posts</button>
     <button @click="GetUserPosts">My posts</button>
     <select name="topics" id="topic-search">
@@ -77,17 +77,18 @@
       placeholder="Write your comment here"
       required
       ></textarea>
+      <br>
       <input
       class="submit"
       type="submit" 
       value="Comment"
       @click="SubmitComment">
+      <button class="postbutton" @click="TogglePostView(undefined)" v-if="postDisplay">Back</button>
     </section>
-    <button class="postbutton" @click="TogglePostView(undefined)" v-if="postDisplay">Back</button>
-    <div class="commentsSection post-explore"  v-if="postDisplay">
+    <div class="post-explore" v-if="postDisplay">
       <h3>Comments</h3>
       <section id="comment-display" v-for="comment in commentPage" :key="comment.id" >
-        <h3>{{ comment.user }}</h3>
+        <h4>{{ comment.user }}</h4>
         <p>{{ comment.comment }}</p>
       </section>
     </div>
@@ -279,25 +280,33 @@ export default defineComponent({
   display: flex;
   flex-direction: row;
 }
-input{
+input {
   font-size: 17px;
-  margin: 0.3rem;
+  margin: .3rem;
   left: 10%;
 }
+select {
+  margin: .3rem;
+  padding: .8rem;
+  font-size: 16px;
+}
 .post-submit {
-  font-size: 15px;
+  font-size: 16px;
 }
 #topic-select{
-  font-size: 15px;
+  font-size: 16px;
 }
 .post-explore {
-  border: 1px solid #333;
   border-radius: 7px;
   margin-top: .5rem;
   cursor: pointer;
-  background-color: #adaba9;
-  font-size: 15px;
+  background-color: var(--gray);
+  font-size: 16px;
+  padding: .8rem;
   margin: 1.5rem;
+}
+.post-explore h3 {
+  color: var(--darkblue);
 }
 .post-content {
   display: none;
@@ -313,23 +322,22 @@ input{
 }
 button,
 .submit {
-  background-color: #333333;
+  border: none;
+  border-radius: 7px;
+  background-color: var(--orange);
   color: aliceblue;
-  margin: 0.2rem;
-  
+  margin: 0.3rem;
+  padding: .8rem;
   font-size: large;
 }
 
 button:hover,
 .submit:hover {
-  background-color: #ea6026;
+  background-color: var(--lightblue);
   color: azure;
   cursor: pointer;
 }
-.expolore h3{
-
- width: 60vw;
-
+#comment-display {
+  margin-top: 2.4rem;
 }
-
 </style>

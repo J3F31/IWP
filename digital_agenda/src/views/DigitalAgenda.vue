@@ -1,49 +1,49 @@
 <template>
-  <Navbar/>
-  <section class="poster">
-    <h1>Communication infographic</h1>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque modi asperiores laboriosam
-      quos perspiciatis animi cum fugiat mollitia similique magnam explicabo accusantium voluptas recusandae,
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sollicitudin nisl a arcu fermentum sodales.
-      Aliquam eu quam diam. Mauris ut augue vitae est dapibus pulvinar. Aliquam id euismod nisi, at rhoncus turpis. 
-      Morbi nec leo eget ligula feugiat pulvinar vel  sit earum, maxime consequatur nobis provident!</p>
-    <div class="posterimage"><img class="img11" src="../../public/assets/Add_a_heading.png" alt=""></div>
-    
+  <div class="main">
+    <Navbar selected-id="agenda"/>
+    <div class="poster">
+      <section>
+        <h1>Professional Engagement</h1>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque modi asperiores laboriosam
+          quos perspiciatis animi cum fugiat mollitia similique magnam explicabo accusantium voluptas recusandae,
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sollicitudin nisl a arcu fermentum sodales.
+          Aliquam eu quam diam. Mauris ut augue vitae est dapibus pulvinar. Aliquam id euismod nisi, at rhoncus turpis. 
+          Morbi nec leo eget ligula feugiat pulvinar vel  sit earum, maxime consequatur nobis provident!
+        </p>
+      </section>
+      <img class="infographic" src="../../public/assets/Infographic_Communication.png" alt="Infographic Communication" loading="lazy">
+      
 
-  </section>
+    </div>
 
-  <section class="poster">
-    <h1>Communication infographic</h1>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque modi asperiores laboriosam
-      quos perspiciatis animi cum fugiat mollitia similique magnam explicabo accusantium voluptas recusandae,
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sollicitudin nisl a arcu fermentum sodales.
-      Aliquam eu quam diam. Mauris ut augue vitae est dapibus pulvinar. Aliquam id euismod nisi, at rhoncus turpis. 
-      Morbi nec leo eget ligula feugiat pulvinar vel  sit earum, maxime consequatur nobis provident!</p>
-    <div class="posterimage1"><img class="img1" src="../../public/assets/Add_a_heading.png" alt=""></div>
-    
-  </section>
+    <div class="poster">
+      <section>
+        <h1>Digital Resources</h1>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque modi asperiores laboriosam
+          quos perspiciatis animi cum fugiat mollitia similique magnam explicabo accusantium voluptas recusandae,
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sollicitudin nisl a arcu fermentum sodales.
+          Aliquam eu quam diam. Mauris ut augue vitae est dapibus pulvinar. Aliquam id euismod nisi, at rhoncus turpis. 
+          Morbi nec leo eget ligula feugiat pulvinar vel  sit earum, maxime consequatur nobis provident!
+        </p>
+      </section>
+      <img class="infographic" src="../../public/assets/Infographic_Tools.png" alt="Infographic Tools" loading="lazy">
+      
+    </div>
 
-  <section class="poster">
-    <h1>Communication infographic</h1>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque modi asperiores laboriosam
-      quos perspiciatis animi cum fugiat mollitia similique magnam explicabo accusantium voluptas recusandae,
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sollicitudin nisl a arcu fermentum sodales.
-      Aliquam eu quam diam. Mauris ut augue vitae est dapibus pulvinar. Aliquam id euismod nisi, at rhoncus turpis. 
-      Morbi nec leo eget ligula feugiat pulvinar vel  sit earum, maxime consequatur nobis provident!</p>
-    <div class="posterimage2"><img class="img1" src="../../public/assets/Add_a_heading_1.png" alt=""></div>
-    
-  </section>
-
-  <section class="poster">
-    <h1>Communication infographic</h1>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque modi asperiores laboriosam
-      quos perspiciatis animi cum fugiat mollitia similique magnam explicabo accusantium voluptas recusandae,
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sollicitudin nisl a arcu fermentum sodales.
-      Aliquam eu quam diam. Mauris ut augue vitae est dapibus pulvinar. Aliquam id euismod nisi, at rhoncus turpis. 
-      Morbi nec leo eget ligula feugiat pulvinar vel  sit earum, maxime consequatur nobis provident!</p>
-    <div class="posterimage3"><img class="img1" src="../../public/assets/Communication.png" alt=""></div>
-    
-  </section>
+    <div class="poster">
+      <section>
+        <h1>Digital Security</h1>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque modi asperiores laboriosam
+          quos perspiciatis animi cum fugiat mollitia similique magnam explicabo accusantium voluptas recusandae,
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sollicitudin nisl a arcu fermentum sodales.
+          Aliquam eu quam diam. Mauris ut augue vitae est dapibus pulvinar. Aliquam id euismod nisi, at rhoncus turpis. 
+          Morbi nec leo eget ligula feugiat pulvinar vel  sit earum, maxime consequatur nobis provident!
+        </p>
+      </section>
+      <img class="infographic" src="../../public/assets/Infographic_Security.png" alt="Infographic Security" loading="lazy">
+      
+    </div>
+  </div>
 </template>
 
 <script lang='ts'>
@@ -54,62 +54,46 @@ export default defineComponent({
   name: 'DigitalAgenda',
   components: {
     Navbar
-  }
+  },
 });
 </script>
 
 <style scoped>
+.main {
+  background-color: var(--gray);
+  overflow: hidden;
+}
 .poster{
- background-color:#cfcdcd;
-  height: 58vh;
+  height: auto;
   width: 85vw;
   margin: 2.5rem;
   margin-left: 10rem;
   position: relative;
-  display: grid;
-  grid-template-columns:   2fr 3fr; 
-  /* grid-row: auto auto auto auto */
+  display: flex;
+  justify-content: space-between;
 }
-.img11{
-  grid-column:2 ;
-  width: 90%; 
-  margin: 3rem;    
-}
-.img1{
-  grid-column:2 ;
-  width: 90%; 
-  margin: 3rem;    
-}
-
-.img2{
-  grid-column:2 ;
-  width: 90%; 
-  margin: 3rem;  
-}
-
-.img3{
-  grid-column:2 ;
-  width: 90%; 
-  margin: 3rem;  
-}
-
 .poster p{
   font-size: 15px;
-  /* margin: 0; */
   height: auto;
-  width: 30%;
+  width: 80%;
   font-size: 18px;
-  position: absolute;
-  top: 40%;
-  left: 20%;
-  transform: translate(-50%, -50%);
   text-align: left;
+  margin: auto;
+  padding: 2rem;
 }
 .poster h1{
-  margin: 1.5rem;
-  left: 40%;
+  height: auto;
+  width: 80%;
+  text-align: left;
+  margin: auto;
+  padding: 2rem 2rem 0 2rem;
   color: #246068;
   font-size: 30px;
-  
+}
+.infographic {
+  height: 80%;
+  width: 50%;
+  object-fit: contain;
+  margin: auto;
 }
 </style>

@@ -43,7 +43,7 @@ export default defineComponent({
   left: 50%;
   transform: translate(-50%, -50%);
 
-  background-image: url("../../public/assets/background1.png");
+  background-image: url("../../public/assets/Background.png");
   background-size: 100% auto;
   z-index: -1;
   opacity: .2;
@@ -61,7 +61,7 @@ export default defineComponent({
 }
 .info h1 {
   margin: 0;
-  color: #246068;
+  color: var(--darkblue);
 }
 .info p {
   margin: 0;

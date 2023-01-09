@@ -61,7 +61,7 @@ export default defineComponent({
   position: absolute;
   transform: translate(-50%, -50%);
 
-  background-color: #333333;
+  background-color: var(--darkblue);
   opacity: 70%;
   border-radius: 7px;
 
@@ -80,9 +80,12 @@ export default defineComponent({
 .submit {
   grid-row-start: 5;
   grid-row-end: 6;
+  border: none;
+  border-radius: 7px;
 }
 .submit:hover{
-  background-color: #ea6026;
-  color: azure;
+  background-color: var(--orange);
+  color: var(--gray);
+  cursor: pointer;
 }
 </style>
