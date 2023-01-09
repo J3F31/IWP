@@ -191,9 +191,11 @@ h1 {
 
 .quiz {
 	background-color: var(--gray);
-	padding: 1rem;
+	padding: 1.6rem;
 	width: 100%;
 	max-width: 640px;
+  border-radius: 0 14px 0 14px;
+  border: 1px solid var(--darkblue);
 }
 
 .quiz-info {
@@ -250,16 +252,15 @@ h1 {
 
 button {
 	appearance: none;
-	outline: none;
 	border: none;
 	cursor: pointer;
 	padding: 0.5rem 1rem;
 	background-color: var(--orange);
 	color: var(--gray);
-	font-weight: 700;
+	font-weight: 500;
 	text-transform: uppercase;
 	font-size: 1.2rem;
-	border-radius: 0.5rem;
+	border-radius: 7px;
 }
 
 button:disabled {

@@ -30,7 +30,6 @@ export default defineComponent({
     }
   },
   mounted() {
-    console.log(this.selectedId)
     if (this.selectedId == null) return
     let string = this.selectedId
     const link = document.getElementById(string)

@@ -69,7 +69,7 @@
 
     <section id="post-display">
     </section>
-    <section v-if="postDisplay">
+    <section class="comment-section" v-if="postDisplay">
       <textarea 
       id="comment-body"
       class="post-body"
@@ -292,18 +292,21 @@ select {
 }
 .post-submit {
   font-size: 16px;
+  margin: 1.5rem;
+  padding: .8rem;
 }
 #topic-select{
   font-size: 16px;
 }
 .post-explore {
-  border-radius: 7px;
   margin-top: .5rem;
   cursor: pointer;
   background-color: var(--gray);
   font-size: 16px;
   padding: .8rem;
   margin: 1.5rem;
+  border-radius: 0 14px 0 14px;
+  border: 1px solid var(--darkblue);
 }
 .post-explore h3 {
   color: var(--darkblue);
@@ -339,5 +342,9 @@ button:hover,
 }
 #comment-display {
   margin-top: 2.4rem;
+}
+.comment-section {
+  margin: 1.5rem;
+  padding: .8rem;
 }
 </style>
