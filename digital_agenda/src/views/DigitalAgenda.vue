@@ -7,7 +7,9 @@
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sollicitudin nisl a arcu fermentum sodales.
       Aliquam eu quam diam. Mauris ut augue vitae est dapibus pulvinar. Aliquam id euismod nisi, at rhoncus turpis. 
       Morbi nec leo eget ligula feugiat pulvinar vel  sit earum, maxime consequatur nobis provident!</p>
-    <div class="posterimage"></div>
+    <div class="posterimage"><img class="img11" src="../../public/assets/Add_a_heading.png" alt=""></div>
+    
+
   </section>
 
   <section class="poster">
@@ -17,7 +19,8 @@
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sollicitudin nisl a arcu fermentum sodales.
       Aliquam eu quam diam. Mauris ut augue vitae est dapibus pulvinar. Aliquam id euismod nisi, at rhoncus turpis. 
       Morbi nec leo eget ligula feugiat pulvinar vel  sit earum, maxime consequatur nobis provident!</p>
-    <div class="posterimage"></div>
+    <div class="posterimage1"><img class="img1" src="../../public/assets/Add_a_heading.png" alt=""></div>
+    
   </section>
 
   <section class="poster">
@@ -27,7 +30,19 @@
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sollicitudin nisl a arcu fermentum sodales.
       Aliquam eu quam diam. Mauris ut augue vitae est dapibus pulvinar. Aliquam id euismod nisi, at rhoncus turpis. 
       Morbi nec leo eget ligula feugiat pulvinar vel  sit earum, maxime consequatur nobis provident!</p>
-    <div class="posterimage"></div>
+    <div class="posterimage2"><img class="img1" src="../../public/assets/Add_a_heading_1.png" alt=""></div>
+    
+  </section>
+
+  <section class="poster">
+    <h1>Communication infographic</h1>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque modi asperiores laboriosam
+      quos perspiciatis animi cum fugiat mollitia similique magnam explicabo accusantium voluptas recusandae,
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sollicitudin nisl a arcu fermentum sodales.
+      Aliquam eu quam diam. Mauris ut augue vitae est dapibus pulvinar. Aliquam id euismod nisi, at rhoncus turpis. 
+      Morbi nec leo eget ligula feugiat pulvinar vel  sit earum, maxime consequatur nobis provident!</p>
+    <div class="posterimage3"><img class="img1" src="../../public/assets/Communication.png" alt=""></div>
+    
   </section>
 </template>
 
@@ -46,26 +61,38 @@ export default defineComponent({
 <style scoped>
 .poster{
  background-color:#cfcdcd;
-  height: 70vh;
+  height: 58vh;
   width: 85vw;
   margin: 2.5rem;
   margin-left: 10rem;
   position: relative;
   display: grid;
-  grid-template-columns:   3fr 2fr; 
-  grid-row: auto auto auto auto
+  grid-template-columns:   2fr 3fr; 
+  /* grid-row: auto auto auto auto */
 }
-.posterimage{
-  grid-column-start:2 ;
-  background-image: url("../../public/assets/poster1.png");
-  margin-right: 5.5rem;
-  /* background-repeat: no-repeat; */
-  /* margin: 1.2rem; */
-  /* width: 200%; */
-margin: 3rem;
-background-size: cover;
+.img11{
+  grid-column:2 ;
+  width: 90%; 
+  margin: 3rem;    
+}
+.img1{
+  grid-column:2 ;
+  width: 90%; 
+  margin: 3rem;    
+}
 
+.img2{
+  grid-column:2 ;
+  width: 90%; 
+  margin: 3rem;  
 }
+
+.img3{
+  grid-column:2 ;
+  width: 90%; 
+  margin: 3rem;  
+}
+
 .poster p{
   font-size: 15px;
   /* margin: 0; */

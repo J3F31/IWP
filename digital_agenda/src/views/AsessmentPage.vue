@@ -121,7 +121,7 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+<style >
 
 body {
 	background-color: #ffffff;
@@ -181,7 +181,7 @@ h1 {
 }
 
 .option.correct {
-	background-color: #e47b19;
+	background-color: #19e485;
 }
 
 .option.wrong {

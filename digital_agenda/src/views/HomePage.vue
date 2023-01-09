@@ -3,11 +3,9 @@
   <div class="back"></div>
   <section class="info">
     <h1>IGNITION</h1>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque modi asperiores laboriosam
-      quos perspiciatis animi cum fugiat mollitia similique magnam explicabo accusantium voluptas recusandae,
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sollicitudin nisl a arcu fermentum sodales.
-      Aliquam eu quam diam. Mauris ut augue vitae est dapibus pulvinar. Aliquam id euismod nisi, at rhoncus turpis. 
-      Morbi nec leo eget ligula feugiat pulvinar vel  sit earum, maxime consequatur nobis provident!
+    <p>Welcome to the IGNITION platform, where you can increase your level of digital literacy. 
+We provide a accessible way to learn the new digital tools, that will help you as a teacher, important advices to keep in mind and a online forum, where you can ask questions and get feedback from your fellow teachers. 
+You can login immediately with your Hanze account and start your journey in improving your digital literacy!
     </p>
   </section>
 </template>
