@@ -16,7 +16,7 @@ const routes = [
     //}
   },
   {
-    path: '/homePage',
+    path: '/home',
     name: 'HomePage',
     component: HomePage,
     meta: {
@@ -25,7 +25,7 @@ const routes = [
     }
   },
   {
-    path: '/asessment',
+    path: '/assessment',
     name: 'Asessment',
     component: AsessmentPage,
     meta:{

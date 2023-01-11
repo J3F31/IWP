@@ -1,10 +1,10 @@
 <template>
   <div class="nav">
     <div class="logo"></div>
-    <router-link to="/agenda" id="agenda" class="agenda">AGENDA</router-link>
-    <router-link to="/forum" id="forum" class="forum">FORUM</router-link>
-    <router-link to="/asessment" id="assessment" class="assessment">ASSESSMENT</router-link>
-    <router-link to="/homePage" id="home" class="home">HOME</router-link>
+    <router-link to="/agenda" id="agenda" class="agenda">Digital Agenda</router-link>
+    <router-link to="/forum" id="forum" class="forum">Community</router-link>
+    <router-link to="/assessment" id="assessment" class="assessment">Practice</router-link>
+    <router-link to="/home" id="home" class="home">Home</router-link>
     <button class="profile" @click="showUser=!showUser"></button>
     <UserInfo class="user" v-if="showUser"/>
   </div>
@@ -67,13 +67,13 @@ a:hover {
   grid-row: 1;
 }
 .forum {
-  grid-column-start: 5;
-  grid-column-end: 6;
+  grid-column-start: 6;
+  grid-column-end: 7;
   grid-row: 1;
 }
 .assessment{
-  grid-column-start: 6;
-  grid-column-end: 7;
+  grid-column-start: 5;
+  grid-column-end: 6;
   grid-row: 1;
 }
 .profile {

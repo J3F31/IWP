@@ -42,7 +42,7 @@ export default defineComponent({
     LoginUser() {
       signInWithEmailAndPassword(getAuth(), this.email, this.password).then(() => {
         this.$emit('username', this.email)
-        router.push('/agenda');
+        router.push('/home');
       }).catch(() => {
         this.wrongCredentials = true;
       })
