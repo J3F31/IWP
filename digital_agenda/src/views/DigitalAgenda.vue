@@ -12,8 +12,6 @@
         </p>
       </section>
       <img class="infographic" src="../../public/assets/Infographic_Communication.png" alt="Infographic Communication" loading="lazy">
-      
-
     </div>
 
     <div class="poster">
@@ -27,7 +25,6 @@
         </p>
       </section>
       <img class="infographic" src="../../public/assets/Infographic_Tools.png" alt="Infographic Tools" loading="lazy">
-      
     </div>
 
     <div class="poster">
@@ -41,7 +38,6 @@
         </p>
       </section>
       <img class="infographic" src="../../public/assets/Infographic_Security.png" alt="Infographic Security" loading="lazy">
-      
     </div>
   </div>
 </template>
