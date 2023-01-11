@@ -8,8 +8,8 @@
           Digital <strong>Communication</strong> a basic set of rules you should follow to make the Internet a <strong>better place for yourself</strong> and for others. 
           Just as there are rules of etiquette in real life, face-to-face encounters, there are also rules you should follow while online.
         </p>
-      </section>
-      <img class="infographic" src="../../public/assets/Infographic_Communication.png" alt="Infographic Communication" loading="lazy">
+      </section> 
+      <img class="infographic" src="../../public/assets/Communication_V2.png" alt="Infographic Communication" loading="lazy" usemap="#workmap">
     </div>
 
     <div class="poster">
@@ -52,6 +52,15 @@ export default defineComponent({
   components: {
     Navbar
   },
+  methods: {
+    ZoomContent(content: string) {
+      const hex = document.getElementById('poster-content')
+      hex?.classList.toggle('no-show')
+      console.log(hex)
+      if (hex == null) return
+      hex!.textContent = content
+    }
+  }
 });
 </script>
 
@@ -59,14 +68,16 @@ export default defineComponent({
 .main {
   background-color: var(--gray);
   overflow: hidden;
+  text-align: center;
 }
 .poster{
   height: auto;
-  width: 85vw;
-  margin: 2.5rem;
-  margin-left: 10rem;
+  margin: 0;
+  padding: 2rem;
+
   position: relative;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
 }
 .poster p{
@@ -74,23 +85,26 @@ export default defineComponent({
   height: auto;
   width: 80%;
   font-size: 18px;
-  text-align: left;
   margin: auto;
   padding: 2rem;
 }
 .poster h1{
   height: auto;
   width: 80%;
-  text-align: left;
   margin: auto;
   padding: 2rem 2rem 0 2rem;
-  color: #246068;
+  color: var(--darkblue);
   font-size: 30px;
 }
 .infographic {
   height: 80%;
-  width: 50%;
+  width: 80%;
   object-fit: contain;
   margin: auto;
+  margin-bottom: 3rem;
+  padding: 2rem;
+}
+strong {
+  color: var(--orange);
 }
 </style>
