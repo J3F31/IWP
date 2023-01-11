@@ -5,22 +5,18 @@
       <section>
         <h1>Professional Engagement</h1>
         <p>
-          Educators’ digital competence is expressed in their ability to use digital technologies not only to enhance teaching, but 
-          also for their professional interactions with colleagues, learners, parents and other interested parties, for their individual 
-          professional development and for the collective good and continuous innovation in the organisation and the teaching 
-          profession.
+          Digital <strong>Communication</strong> a basic set of rules you should follow to make the Internet a <strong>better place for yourself</strong> and for others. 
+          Just as there are rules of etiquette in real life, face-to-face encounters, there are also rules you should follow while online.
         </p>
-      </section>
-      <img class="infographic" src="../../public/assets/Infographic_Communication.png" alt="Infographic Communication" loading="lazy">
-      
-
+      </section> 
+      <img class="infographic" src="../../public/assets/Communication_V2.png" alt="Infographic Communication" loading="lazy" usemap="#workmap">
     </div>
 
     <div class="poster">
       <section>
         <h1>Digital Resources</h1>
         <p>
-          Educators are currently confronted with a wealth of digital (educational) resources they can use for teaching. One of the 
+          Educators are currently confronted with a wealth of <strong>digital (educational) resources</strong> they can use for teaching. One of the 
           key competences any educator needs to develop is to come to terms with this variety, to effectively identify resources 
           that best fit their learning objectives, learner group and teaching style, to structure the wealth of materials, establish 
           connections and to modify, add on to and develop themselves digital resources to support their teaching.
@@ -58,6 +54,15 @@ export default defineComponent({
   components: {
     Navbar
   },
+  methods: {
+    ZoomContent(content: string) {
+      const hex = document.getElementById('poster-content')
+      hex?.classList.toggle('no-show')
+      console.log(hex)
+      if (hex == null) return
+      hex!.textContent = content
+    }
+  }
 });
 </script>
 
@@ -65,14 +70,16 @@ export default defineComponent({
 .main {
   background-color: var(--gray);
   overflow: hidden;
+  text-align: center;
 }
 .poster{
   height: auto;
-  width: 85vw;
-  margin: 2.5rem;
-  margin-left: 10rem;
+  margin: 0;
+  padding: 2rem;
+
   position: relative;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
 }
 .poster p{
@@ -80,23 +87,26 @@ export default defineComponent({
   height: auto;
   width: 80%;
   font-size: 18px;
-  text-align: left;
   margin: auto;
   padding: 2rem;
 }
 .poster h1{
   height: auto;
   width: 80%;
-  text-align: left;
   margin: auto;
   padding: 2rem 2rem 0 2rem;
-  color: #246068;
+  color: var(--darkblue);
   font-size: 30px;
 }
 .infographic {
   height: 80%;
-  width: 50%;
+  width: 80%;
   object-fit: contain;
   margin: auto;
+  margin-bottom: 3rem;
+  padding: 2rem;
+}
+strong {
+  color: var(--orange);
 }
 </style>

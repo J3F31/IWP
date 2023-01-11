@@ -1,98 +1,103 @@
 <template>
   <Navbar selected-id="forum"/>
-  <section v-if="!creatingPost && !postDisplay" class="search">
-    <button @click="GetPosts">All posts</button>
-    <button @click="GetUserPosts">My posts</button>
-    <select name="topics" id="topic-search">
-      <option value="">no topic</option>
-      <option value="professional engagement">professional engagement</option>
-      <option value="digital resources">digital resources</option>
-      <option value="teaching and learning">teaching and learning</option>
-      <option value="assessment">assessment</option>
-      <option value="empowering learners">empowering learners</option>
-      <option value="facilitating learners' digital competence">facilitating learners' digital competence</option>
-    </select>
-    <button @click="GetTopicPosts">Search by topic</button>
-    <button @click="creatingPost=!creatingPost">Create a post</button>
-  </section>
-  <section v-if="creatingPost" class="post-submit">
-    <input 
-    class="post-title"
-    id="title"
-    type="text"
-    placeholder="Give your post a title"
-    v-model="postTitle"
-    required
-    />
-    <br>
-    <select name="topics" id="topic-select">
-      <option value="">(select post topic)</option>
-      <option value="professional engagement">professional engagement</option>
-      <option value="digital resources">digital resources</option>
-      <option value="teaching and learning">teaching and learning</option>
-      <option value="assessment">assessment</option>
-      <option value="empowering learners">empowering learners</option>
-      <option value="facilitating learners' digital competence">facilitating learners' digital competence</option>
-    </select>
-    <br>
-    <textarea 
-    class="post-body"
-    id="post-body"
-    type="text"
-    placeholder="Write your post here"
-    v-model="postBody"
-    required
-    ></textarea>
-    <br>
-    <input 
-    class="submit"
-    type="submit" 
-    value="Post"
-    @click="SubmitPost">
-    <button @click="creatingPost=!creatingPost">Cancel</button>
-  </section>
-  <section v-if="!creatingPost" class="explore">
-    <div v-if="!postDisplay">
-      <div class="page-navigation">
-        <button v-if="pageNumber > 1" @click="TogglePage(-1)">page back</button>
-        <p>{{ pageNumber }}/{{ Math.ceil(posts.length / 5) > 0 ? Math.ceil((posts.length + 1) / 5) : 1 }}</p>
-        <button v-if="pageNumber <= posts.length / 5" @click="TogglePage(1)">page forward</button>
-      </div> 
-      <section v-for="(post, index) in postPage" :key="post.id" class="post-explore" :id="'post' + index" @click="TogglePostView(index)">
-        <h3>{{ post.title }}</h3>
-        <h4>{{ post.user }}</h4>
-        <h5>{{ post.topic }}</h5>
-        <p>{{ post.timestamp }}</p>
-        <p class="post-content" :id="'content' + index">{{ post.body }}</p>
-      </section>
-    </div>
-
-    <section id="post-display">
+  <div class="main">
+  </div>
+    <section v-if="!creatingPost && !postDisplay" class="search">
+      <button @click="GetPosts">All posts</button>
+      <button @click="GetUserPosts">My posts</button>
+      <select name="topics" id="topic-search">
+        <option value="">no topic</option>
+        <option value="professional engagement">professional engagement</option>
+        <option value="digital resources">digital resources</option>
+        <option value="teaching and learning">teaching and learning</option>
+        <option value="assessment">assessment</option>
+        <option value="empowering learners">empowering learners</option>
+        <option value="facilitating learners' digital competence">facilitating learners' digital competence</option>
+      </select>
+      <button @click="GetTopicPosts">Search by topic</button>
+      <button @click="creatingPost=!creatingPost">Create a post</button>
     </section>
-    <section class="comment-section" v-if="postDisplay">
-      <textarea 
-      id="comment-body"
-      class="post-body"
+    <section v-if="creatingPost" class="post-submit">
+      <input 
+      class="post-title"
+      id="title"
       type="text"
-      placeholder="Write your comment here"
+      placeholder="Give your post a title"
+      v-model="postTitle"
+      required
+      />
+      <br>
+      <select name="topics" id="topic-select">
+        <option value="">(select post topic)</option>
+        <option value="professional engagement">professional engagement</option>
+        <option value="digital resources">digital resources</option>
+        <option value="teaching and learning">teaching and learning</option>
+        <option value="assessment">assessment</option>
+        <option value="empowering learners">empowering learners</option>
+        <option value="facilitating learners' digital competence">facilitating learners' digital competence</option>
+      </select>
+      <br>
+      <textarea 
+      class="post-body"
+      id="post-body"
+      type="text"
+      placeholder="Write your post here"
+      v-model="postBody"
       required
       ></textarea>
       <br>
-      <input
+      <input 
       class="submit"
       type="submit" 
-      value="Comment"
-      @click="SubmitComment">
-      <button class="postbutton" @click="TogglePostView(undefined)" v-if="postDisplay">Back</button>
+      value="Post"
+      @click="SubmitPost">
+      <button @click="creatingPost=!creatingPost">Cancel</button>
     </section>
-    <div class="post-explore" v-if="postDisplay">
-      <h3>Comments</h3>
-      <section id="comment-display" v-for="comment in commentPage" :key="comment.id" >
-        <h4>{{ comment.user }}</h4>
-        <p>{{ comment.comment }}</p>
+    <section v-if="!creatingPost" class="explore">
+      <div v-if="!postDisplay">
+        <div class="center">
+          <div class="page-navigation">
+            <button v-if="pageNumber > 1" @click="TogglePage(-1)">page back</button>
+            <p>{{ pageNumber }}/{{ Math.ceil(posts.length / 5) > 0 ? Math.ceil((posts.length + 1) / 5) : 1 }}</p>
+            <button v-if="pageNumber <= posts.length / 5" @click="TogglePage(1)">page forward</button>
+          </div> 
+          <section v-for="(post, index) in postPage" :key="post.id" class="post-explore" :id="'post' + index" @click="TogglePostView(index)">
+            <h3>{{ post.title }}</h3>
+            <h4>{{ post.user }}</h4>
+            <h5>{{ post.topic }}</h5>
+            <p>{{ post.timestamp }}</p>
+            <p class="post-content" :id="'content' + index">{{ post.body }}</p>
+          </section>
+        </div>
+      </div>
+
+      <section id="post-display">
       </section>
-    </div>
-  </section>
+      <section class="comment-section" v-if="postDisplay">
+        <textarea 
+        id="comment-body"
+        class="post-body"
+        type="text"
+        placeholder="Write your comment here"
+        required
+        ></textarea>
+        <br>
+        <input
+        class="submit"
+        type="submit" 
+        value="Comment"
+        @click="SubmitComment">
+        <button class="postbutton" @click="TogglePostView(undefined)" v-if="postDisplay">Back</button>
+      </section>
+      <div class="post-explore" v-if="postDisplay">
+        <h3>Comments</h3>
+        <section id="comment-display" v-for="comment in commentPage" :key="comment.id" >
+          <h4>{{ comment.user }}</h4>
+          <p>{{ comment.comment }}</p>
+        </section>
+      </div>
+    </section>
+  
 </template>
 
 <script lang='ts'>
@@ -146,7 +151,6 @@ export default defineComponent({
       this.posts.forEach((doc) => {
         docCount++
         if (docCount < startDoc) return
-        docStop++
         if (docStop > 5) return
         this.postPage.push(doc)
       })
@@ -276,6 +280,21 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.main {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  background-image: url("../../public/assets/BACKGROUND_LINES_BLUE.png");
+  background-repeat: repeat;
+  background-size: 100% auto;
+  z-index: -1;
+}
+.search {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
 .page-navigation {
   display: flex;
   flex-direction: row;
@@ -299,6 +318,7 @@ select {
   font-size: 16px;
 }
 .post-explore {
+  width: 60%;
   margin-top: .5rem;
   cursor: pointer;
   background-color: var(--gray);
@@ -346,5 +366,11 @@ button:hover,
 .comment-section {
   margin: 1.5rem;
   padding: .8rem;
+}
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 4rem;
 }
 </style>
