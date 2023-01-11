@@ -187,7 +187,7 @@ export default defineComponent({
   height: 100vh;
   width: 100%;
   position: fixed;
-  background-image: url("../../public/assets/AgendaBack.png");
+  background-image: url("../../public/assets/BACKGROUND_LINES_ORANGE.png");
   background-repeat: no-repeat;
   background-size: 100% auto;
  
