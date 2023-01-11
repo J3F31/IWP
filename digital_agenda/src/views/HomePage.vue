@@ -8,7 +8,7 @@
       </section>
     </div>
     <section class="info">
-      <h1>IGNITION</h1>
+      <h1>ABout US</h1>
       <p>Welcome to the IGNITION platform, where you can increase your level of digital literacy. 
         We provide a accessible way to learn the new digital tools, that will help you as a teacher, important advices to keep in mind and a online forum, where you can ask questions and get feedback from your fellow teachers. 
         You can login immediately with your Hanze account and start your journey in improving your digital literacy!
@@ -22,14 +22,14 @@
       </p>
     </section>
     <section class="info">
-      <h1>IGNITION</h1>
+      <h1>Digital Agenda</h1>
       <p>Welcome to the IGNITION platform, where you can increase your level of digital literacy. 
         We provide a accessible way to learn the new digital tools, that will help you as a teacher, important advices to keep in mind and a online forum, where you can ask questions and get feedback from your fellow teachers. 
         You can login immediately with your Hanze account and start your journey in improving your digital literacy!
       </p>
     </section>
     <section class="info">
-      <h1>IGNITION</h1>
+      <h1>About the Website</h1>
       <p>Welcome to the IGNITION platform, where you can increase your level of digital literacy. 
         We provide a accessible way to learn the new digital tools, that will help you as a teacher, important advices to keep in mind and a online forum, where you can ask questions and get feedback from your fellow teachers. 
         You can login immediately with your Hanze account and start your journey in improving your digital literacy!
