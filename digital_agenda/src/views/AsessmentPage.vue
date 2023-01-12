@@ -44,8 +44,8 @@
 			</button>
 		</section>
 
-		<section v-else>
-			<h2>You have finished the self-assessment!</h2>
+		<section v-else class="finished">
+			<h2>You have finished the self-assessment!<br><br>Look at your profile to view progress.</h2>
 			<!--<p>Your score is {{ score }}/{{ questions.length }}</p>-->
 		</section>
 	</main>
@@ -274,5 +274,8 @@ button {
 
 button:disabled {
 	opacity: 0.5;
+}
+.finished {
+  text-align: center;
 }
 </style>
